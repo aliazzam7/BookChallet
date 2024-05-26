@@ -1,0 +1,74 @@
+<!-- navbar -->
+<nav class="navbar-top">
+    <div class="logo"><img src="la wen.png" alt="Company Logo"></div>
+    <div class="navbar-top-center">
+        <a href="home.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </div>
+    <div class="navbar-top-right">
+        <a href="user.html">Sign In</a>
+        <a href="signup.html">Sign Up</a>
+    </div>
+    <button class="menu"></button>
+</nav>
+
+<div class="sidebar" id="sidebar">
+    <span class="close-btn"></span>
+    <a href="home.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="user.html">Sign In</a>
+    <a href="signup.html">Sign Up</a>
+</div>
+<div class="content">
+</div>
+
+
+
+
+<div class="container">
+    <div class="left">
+        <h3 class="heading">Contact Us</h3>
+        <p class="text">We're here to help and answer you question</p>
+
+        <form action="#">
+            <div class="inputbox">
+                <input type="text" name="name" class="name" placeholder="Enter your name" autocomplete="off" required>
+            </div>
+
+            <div class="inputbox">
+                <input type="text" name="email" class="email" placeholder="Enter your email address" autocomplete="off" required>
+            </div>
+
+            <div class="inputbox">
+                <input type="phone" name="phone" class="phone" placeholder="+961 555 666" autocomplete="off" required>
+            </div>
+
+            <div class="inputbox">
+                <textarea type="message" class="name" placeholder="Enter your message"></textarea>
+            </div>
+
+            <button class="btn">Submit</button>
+        </form>
+    </div>
+
+    <div class="right">
+        <div class="myimg">
+            <img src="animated-image.avif"/>
+        </div>
+    </div>
+</div>
+
+<script>
+
+function showSidebar(){
+    const sidebar = document.querySelector('.sidebar')
+    sidebar.style.display = 'flex'
+}
+function hideSidebar(){
+    const sidebar = document.querySelector('.sidebar')
+    sidebar.style.display = 'none'
+}
+
+</script>
