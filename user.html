@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+ 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Noto+Serif&family=Nunito:ital,wght@0,200;1,200&family=Sassy+Frass&family=Sorts+Mill+Goudy&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Sorts Mill Goudy', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }/* Add this to your existing CSS */
+
+.login-form-container, 
+.registration-form-container {
+    transition: all 0.5s ease-in-out;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hidden {
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+}
+
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .image-slider-container {
+            position: relative;
+            width: 60%;
+            margin-right: 20px;
+        }
+
+        .fixedimage {
+            width: 90%;
+            height: 800px;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.7;
+            border-radius: 5px;
+        }
+
+        .carousel-caption {
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            width: 60%;
+            margin-left: 70px;
+            opacity: 0;
+            transition: visibility 0s, opacity 0.5s ;
+            margin-bottom: 20px;
+        }
+
+        .carousel-inner .item.active .carousel-caption {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .carousel-indicators {
+            bottom: -35px;
+        }
+
+        .carousel-indicators li {
+            background-color: #bbb;
+        }
+
+        .carousel-indicators .active {
+            background-color: #000;
+        }
+
+        .login-form-container,
+        .registration-form-container {
+            width: 40%;
+        }
+
+        .login-form,
+        .registration-form {
+            margin-left: 20px;
+            border-radius: 2px;
+            padding: 30px;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .login-form h1,
+        .registration-form h1 {
+            text-align: center;
+        }
+
+        .login-form h1 + p,
+        .registration-form h1 + p {
+            text-align: center;
+            color: #00689B;
+            font-weight: bold;
+        }
+
+        .login-form input[type="email"],
+        .login-form input[type="password"],
+        .registration-form input[type="email"],
+        .registration-form input[type="password"],
+        .registration-form input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        /* Add this to your existing CSS */
+
+        .login-form input[type="submit"],
+        .registration-form input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #00689B;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .login-form input[type="submit"]:hover,
+        .registration-form input[type="submit"]:hover {
+            background-color: #00679b7d;
+            color: black;
+        }
+
+        .login-form .form-check,
+        .registration-form .form-check {
+            margin-bottom: 15px;
+        }
+
+        .login-form .form-footer,
+        .registration-form .form-footer {
+            text-align: center;
+        }
+
+        .login-form .form-footer a,
+        .registration-form .form-footer a {
+            color: #888;
+            text-decoration: none;
+
+        }
+
+        .login-form .form-footer a:hover,
+        .registration-form .form-footer a:hover {
+            color: #555;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #00689B;
+            font-size: 24px;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #0e90d1;
+        }
+ 
+
+
+
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="image-slider-container">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>
+
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <div class="fixedimage" style="background-image: url('ImagesCopy/imgone.jpg');"></div>
+                        <div class="carousel-caption">
+                            <h4>Welcome to your cozy chalet!</h4>
+                            <p>Get ready to unwind in comfort and tranquility</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="fixedimage" style="background-image: url('ImagesCopy/imgtwo.jpg');"></div>
+                        <div class="carousel-caption">
+                            <h4>Reserve your spot in paradise</h4>
+                            <p>Book your chalet stay and create memories to last a lifetime.</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="fixedimage" style="background-image: url('ImagesCopy/imggss.jpg');"></div>
+                        <div class="carousel-caption">
+                            <h4>Discover and reserve your ideal chalet</h4>
+                            <p>hassle-free, anytime, anywhere.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="login-form-container">
+            <form class="login-form" action="login.html" method="">
+                <h1>Welcome Back </h1>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="pswd" placeholder="Password" required>
+                <input type="submit" value="Login">
+                <br>
+                <div class="form-check mb-3">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" name="remember"> Remember me
+                    </label>
+                </div>
+                <br><br>
+                <div class="form-footer">
+                    <a href="user.html">You don't have an account? Create One</a>
+                </div>
+            </form>
+        </div>
+        <div class="registration-form-container" style="display: none;">
+            <form class="registration-form" action="" method="">
+                <h1>Sign Up</h1>
+                <input type="text" name="first_name" placeholder="First Name">
+                <input type="text" name="last_name" placeholder="Last Name">
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="text" name="phone" placeholder="Phone Number">
+                <input type="password" name="pswd" placeholder="Password" required>
+                <input type="password" name="cpswd" placeholder="Confirm Password" required>
+                <input type="submit" value="Sign Up">
+                <br>   <br>
+                <div class="form-footer">
+                    <a href="user.html" style="padding-top: 1000px;">Already have an account? Log In</a>
+                </div>
+              
+
+                 <div style="color: #bbb; font-size: 17px; margin-left: 176px; margin-top: 20px;">or </div>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-google"></i></a>
+                    <a href=""><i class="fa-brands fa-apple"></i></a>
+                </div>
+                </div>
+                
+                
+                </div>
+                
+            </form>
+        </div>
+        <script>
+            $(document).ready(function() {
+               
+                $('a[href="user.html"]').click(function(e) {
+                    e.preventDefault(); 
+                    $('.login-form-container').hide();
+                    $('.registration-form-container').show();
+                });
+            });
+        </script>
+</body>
+</html>
+
+
+ 
+</body>
+</html>
