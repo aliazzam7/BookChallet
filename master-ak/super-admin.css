@@ -1,0 +1,174 @@
+ 
+        .right-end {
+            position: absolute;
+            right: 3%;
+        }
+
+        .buttonuser {
+            display: flex;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+        
+
+        .buttonuser:hover {
+            background-color: #45a049;
+        }
+
+        .modal-dialog {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1050;
+        }
+
+        .modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            
+            z-index: 1040;
+        }
+        .error {
+            color: red;
+        }
+        .success {
+            color: green;
+        }
+       <!-- .header {
+            
+            background: #F5F5F5 ;
+            background: linear-gradient(45deg, rgba(11,3,45,1) 0%, rgba(0,212,255,1) 100%);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            color: #fff;
+            padding: 15px;
+            text-align: center ;
+            margin-top: 0;
+            font-size: 25px;
+            font-weight: bold;
+        } -->
+        .sidebar {
+           
+  background: linear-gradient(45deg, rgba(0,212,255,1) 0%, rgba(11,3,45,1) 100%);
+            width: 15%;
+            float: left;
+            height: 110vh;
+        }
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .sidebar li a {
+            display: block;
+            color: #fff;
+            padding: 20%;
+            text-decoration: none;
+            transition: background-color 0.3s; /* Smooth transition on hover */
+        }
+        .sidebar li a:hover {
+            background-color: #0d88cf; /* Darker gray background on hover */
+        }
+
+       
+        
+        .chart-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            
+            padding: 22px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            height: 110vh;
+            
+        }
+
+        .circle-board {
+            width: 30%;
+            margin-right: 8%;
+            margin-bottom: 12%;
+        }
+
+        .rectangle-board {
+            width: 50%;
+            margin-bottom: 12%;
+        }
+        canvas {
+            width: 100% !important;
+            height: auto !important;
+        }
+        .rectangle2-board {
+            width: 100%;
+            
+            
+        }
+        .btn-primary {
+            
+            float: right;
+        }
+
+        @media screen and (max-width: 850px) {
+            .chart-container {
+                display: flex;
+            flex-direction: column;
+            height: 100%;
+            width: 100%;
+            }
+            
+            .rectangle-board {
+                width: 100%;
+                height: 30%;
+                margin-bottom: 12%;
+            }
+            .circle-board {
+                width: 100%;
+                height: 29%;
+                margin-bottom: 12%;
+            }
+           
+            .rectangle2-board {
+            width: 100%;
+            margin-bottom: 12%;
+            height: 37%;
+            }
+            .sidebar{
+                  
+                width: 20%;
+                height: 100%; 
+            }  
+            
+            .buttonuser {
+                padding: 8px 16px;
+                font-size: 10px;
+                
+            }
+        
+        }
+        
+        .link-div {
+            cursor: pointer;
+            color: blue;
+            text-decoration: underline;
+        }
+
+        * {
+            font-family: 'Sorts Mill Goudy', sans-serif;
+        }
+   
+        
+        

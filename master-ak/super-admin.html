@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="super-admin.css">
+    <link href="tests/nav.css" rel="stylesheet">
+   
+<body style=" background-color: rgba(221, 225, 225, 0.5);">
+    <div >
+                <div class="sidebar">
+                    <ul>
+                        <li class="logo-custom flex-fill text-center link-div"  onclick="window.location.href='#'";><img src="master/images/la wen.png" alt="Company Logo"></li>
+                        <li><a href="#" id="dashboard_tab"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                        <li><a href="#" id="chalets_tab"><i class="fas fa-home"></i> Chalets</a></li>
+                        <li><a href="#" id="users_tab"><i class="fas fa-user""></i> Users</a></li>
+                    </ul>
+                </div>
+
+                <div id="dashboard_div" style="display:''" class="row flex-lg-nowrap">
+                    <div class="col mb-3">
+                        <div class="e-panel card">
+                            <div class="chart-container">
+                                <div class="circle-board">
+                                    <canvas id="costChart"></canvas>
+                                </div>
+
+                                <div class="rectangle-board">
+                                    <canvas id="ageChart"></canvas>
+
+                                    <div class="rectangle2-board">
+                                        <canvas id="chaletCountChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div id="chalets_div" style="display:none" class="row flex-lg-nowrap">
+                    <div class="col mb-3">
+                        <div class="e-panel card">
+                            <div class="card-body">
+                                <div class="card-title">
+                                    <div class="right-end">
+                                        <button id="button1" class="buttonuser">New Chalet</button>
+                                    </div>
+                                    <h6 class="mr-2" style="padding: 15px"><span>Chalets_Info</span></h6>
+                                </div>
+                                <div class="e-table">
+                                    <div class="table-responsive table-lg mt-3">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th class="max-width">Name</th>
+                                                    <th>Location</th>
+                                                    <th class="sortable">Date</th>
+                                                    <th>Active</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-nowrap align-middle">Leb Chalet</td>
+                                                    <td class="text-nowrap align-middle">Lebanon</td>
+                                                    <td class="text-nowrap align-middle"><span>09 Dec 2017</span></td>
+                                                    <td class="text-center align-middle">
+                                                        <label class="switch">
+                                                            <input type="checkbox">
+                                                            <span class="slider"></span>
+                                                        </label>
+                                                    </td>
+                                                    <td class="text-center align-middle">
+                                                        <div class="btn-group align-top">
+                                                            <button class="btn btn-sm btn-outline-secondary badge" id="button2">Edit</button>
+                                                            <button class="btn btn-sm btn-outline-secondary badge" type="button">Delete</button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <ul class="pagination mt-3 mb-0">
+                                            <li class="disabled page-item"><a href="#" class="page-link">‹</a></li>
+                                            <li class="active page-item"><a href="#" class="page-link">1</a></li>
+                                            <li class="page-item"><a href="#" class="page-link">2</a></li>
+                                            <li class="page-item"><a href="#" class="page-link">›</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-3 mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div>
+                                    <div class="form-group">
+                                        <label>Date from - to:</label>
+                                        <div>
+                                            <input id="dates-range" class="form-control flatpickr-input" placeholder="01 Dec 17 - 27 Jan 18" type="text" readonly="readonly">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Search by Name:</label>
+                                        <div><input class="form-control w-100" type="text" placeholder="Name"></div>
+                                    </div>
+                                </div>
+                                <hr class="my-3">
+                                <div>
+                                    <label>Status:</label>
+                                    <div class="px-2">
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" class="custom-control-input" name="user-status" id="users-status-disabled">
+                                            <label class="custom-control-label" for="users-status-disabled">Disabled</label>
+                                        </div>
+                                    </div>
+                                    <div class="px-2">
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" class="custom-control-input" name="user-status" id="users-status-active">
+                                            <label class="custom-control-label" for="users-status-active">Active</label>
+                                        </div>
+                                    </div>
+                                    <div class="px-2">
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" class="custom-control-input" name="user-status" id="users-status-any" checked>
+                                            <label class="custom-control-label" for="users-status-any">Any</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="CreateChalet" style="display: none; ">
+                        
+                        <div class="modal-dialog modal-lg" role="document" ">
+                            <div class="modal-content" >
+                                <div class="modal-header" >
+                                    <h5 class="modal-title">Create Chalet</h5>
+                                    <button type="button" class="close" id="close1">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form class="form" id="registrationForm1" onsubmit="return validatePassword1()">
+                                        <div class="row">
+                                            <div class="col"><div class="form-group" >
+                                                <label>Chalet Name</label>
+                                                <input class="form-control" type="text" name="name" placeholder="Your Chalet Name" required>
+                                            </div></div>
+                                            <div class="col"><div class="form-group">
+                                                <label>Location</label>
+                                                <input class="form-control" type="text" name="Location" placeholder="Location" required>
+                                            </div></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col"><div class="form-group">
+                                                <label>Password</label>
+                                                <input class="form-control" type="password" placeholder="••••••" id="password1"  required>
+                                            </div></div>
+                                            <div class="col"><div class="form-group">
+                                                <label>Confirm Password</label>
+                                                <input class="form-control" type="password" placeholder="••••••" id="confirmPassword1"  required>
+                                                
+                                            </div></div>
+                                        </div>
+                                        
+                                        
+                                        
+                                        <span id="message1"></span>
+                                        <div class="form-group">
+                                            <label>Date</label>
+                                            <input class="form-control"  type="date" id="date" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <button class="btn btn-primary" style="align-items: right;" type="submit">Save</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="Edit" style="display: none;">
+                      
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Edit Chalet</h5>
+                                    <button type="button" class="close" id="close2">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form class="form" id="registrationForm2" onsubmit="return validatePassword2()">
+                                            <div class="row">
+                                                <div class="col"><div class="form-group" >
+                                                    <label>Chalet Name</label>
+                                                    <input class="form-control" type="text" name="name" placeholder="Your Chalet Name" required>
+                                                </div></div>
+                                                <div class="col"><div class="form-group">
+                                                    <label>Location</label>
+                                                    <input class="form-control" type="text" name="Location" placeholder="Location" required>
+                                                </div></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col"><div class="form-group">
+                                                    <label>Password</label>
+                                                    <input class="form-control" type="password" placeholder="••••••" id="password1"  required>
+                                                </div></div>
+                                                <div class="col"><div class="form-group">
+                                                    <label>Confirm Password</label>
+                                                    <input class="form-control" type="password" placeholder="••••••" id="confirmPassword1"  required>
+                                                    
+                                                </div></div>
+                                            </div>
+                                            
+                                            
+                                            
+                                            <span id="message1"></span>
+                                            <div class="form-group">
+                                                <label>Date</label>
+                                                <input class="form-control"  type="date" id="date" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <button class="btn btn-primary" y type="submit">Save</button>
+                                            </div>
+                                        </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div id="users_div" style="display: none;" class="row flex-lg-nowrap">
+                    <div class="col mb-3">
+                        <div class="e-panel card">
+                            <div class="card-body">
+                                <div class="card-title">
+                                    <div class="right-end">
+                                        <button id="button3" class="buttonuser">New User</button>
+                                    </div>
+                                    <h6 class="mr-2" style="padding: 15px"><span>Users_Info</span></h6>
+                                </div>
+                                <div class="e-table">
+                                    <div class="table-responsive table-lg mt-3">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th class="max-width">Name</th>
+                                                    <th>Location</th>
+                                                    <th class="sortable">Date of birth</th>
+                                                    <th>Phone number</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-nowrap align-middle">Alex</td>
+                                                    <td class="text-nowrap align-middle">Lebanon</td>
+                                                    <td class="text-nowrap align-middle"><span>02 08 1997</span></td>
+                                                    <td class="text-nowrap align-middle">961-71202785</td>
+                                                    <td class="text-center align-middle">
+                                                        <div class="btn-group align-top">
+                                                            <button class="btn btn-sm btn-outline-secondary badge" id="button4">Edit</button>
+                                                            <button class="btn btn-sm btn-outline-secondary badge" type="button">Delete</button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <ul class="pagination mt-3 mb-0">
+                                            <li class="disabled page-item"><a href="#" class="page-link">‹</a></li>
+                                            <li class="active page-item"><a href="#" class="page-link">1</a></li>
+                                            <li class="page-item"><a href="#" class="page-link">2</a></li>
+                                            <li class="page-item"><a href="#" class="page-link">›</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-3 mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div>
+                                    <div class="form-group">
+                                        <label>Search by Number</label>
+                                        <div>
+                                            <input class="form-control w-100" type="PhoneNumber" placeholder="PhoneNumber">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Search by Name:</label>
+                                        <div><input class="form-control w-100" type="text" placeholder="Name"></div>
+                                    </div>
+                                </div>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="CreateUser" style="display: none; ">
+                        
+                        <div class="modal-dialog modal-lg" role="document" ">
+                            <div class="modal-content" >
+                                <div class="modal-header" >
+                                    <h5 class="modal-title">Create User</h5>
+                                    <button type="button" class="close" id="close3">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form class="form" id="registrationForm3" onsubmit="return validatePassword3()" >
+                                        <div class="form-group">
+                                            <label>Upload photo</label>
+                                            <input type="file">
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                            <div class="form-group">
+                                            <label>First Name</label>
+                                            <input class="form-control" type="text" name="name" placeholder="First Name" >
+                                            </div>
+                                            </div>
+                                            <div class="col">
+                                            <div class="form-group">
+                                            <label>Last Name</label>
+                                            <input class="form-control" type="text" name="Last Name" placeholder="Last Name" value="">
+                                            </div>
+                                            </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                <div class="form-group">
+                                                <label>Date of Birth</label>
+                                                <input class="form-control" type="date" name="Date of Birth" placeholder="Date of Birth" >
+                                                </div>
+                                                </div>
+                                                <div class="col">
+                                                <div class="form-group">
+                                                <label>Location</label>
+                                                <input class="form-control" type="text" name="Location" placeholder="Location" value="">
+                                                </div>
+                                                </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>PhoneNumber</label>
+                                                    <input class="form-control" type="text" name="PhoneNumber" placeholder="PhoneNumber" required>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Password</label>
+                                                        <input class="form-control" type="password" id="password3" placeholder="••••••" required>
+                                                    </div>
+                                                    </div>
+                                                    <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Confirm Password</label>
+                                                        <input class="form-control" type="password" id="confirmPassword3" placeholder="••••••" required>
+                                                    </div>
+                                                    </div>
+                                                    </div>
+                                                    <div class="text-center"><span id="message4"></span></div>
+
+                                        <div class="form-group">
+                                            <button class="btn btn-primary" type="submit">Save</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="EditUser" style="display: none;">
+                 
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Edit User</h5>
+                                    <button type="button" class="close" id="close4">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form class="form" id="registrationForm4" onsubmit="return validatePassword4()" >
+                                        
+                                        <div class="row">
+                                            <div class="col">
+                                            <div class="form-group">
+                                            <label>First Name</label>
+                                            <input class="form-control" type="text" name="name" placeholder="First Name" >
+                                            </div>
+                                            </div>
+                                            <div class="col">
+                                            <div class="form-group">
+                                            <label>Last Name</label>
+                                            <input class="form-control" type="text" name="Last Name" placeholder="Last Name" value="">
+                                            </div>
+                                            </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                <div class="form-group">
+                                                <label>Date of Birth</label>
+                                                <input class="form-control" type="date" name="Date of Birth" placeholder="Date of Birth" >
+                                                </div>
+                                                </div>
+                                                <div class="col">
+                                                <div class="form-group">
+                                                <label>Location</label>
+                                                <input class="form-control" type="text" name="Location" placeholder="Location" value="">
+                                                </div>
+                                                </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>PhoneNumber</label>
+                                                    <input class="form-control" type="text" name="PhoneNumber" placeholder="PhoneNumber" required>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Password</label>
+                                                        <input class="form-control" type="password" id="password4" placeholder="••••••" required>
+                                                    </div>
+                                                    </div>
+                                                    <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Confirm Password</label>
+                                                        <input class="form-control" type="password" id="confirmPassword4" placeholder="••••••" required>
+                                                    </div>
+                                                    </div>
+                                                    </div>
+                                                    <div class="text-center"><span id="message4"></span></div>
+
+                                        <div class="form-group">
+                                            <button class="btn btn-primary" type="submit">Save</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+   
+
+    
+
+    <script>
+        var div1 = document.getElementById('CreateChalet');
+        var div2 = document.getElementById('Edit');
+        var div3 = document.getElementById('CreateUser');
+        var div4 = document.getElementById('EditUser');
+        document.getElementById('button1').onclick = function() {
+            
+            if (div1.style.display === 'none' || div1.style.display === '') {
+                div1.style.display = 'block';
+                div2.style.display = 'none'
+            } 
+        };
+
+
+        document.getElementById('button2').onclick = function() {
+            
+            if (div2.style.display === 'none' || div2.style.display === '') {
+                div2.style.display = 'block';
+                div1.style.display = 'none'
+            } 
+        };
+
+        document.getElementById('close1').onclick = function() {
+           
+            div1.style.display = 'none';
+        }
+
+        document.getElementById('close2').onclick = function() {
+           
+            div2.style.display = 'none';
+        }
+
+        document.getElementById('button3').onclick = function() {
+            
+            if (div3.style.display === 'none' || div3.style.display === '') {
+                div3.style.display = 'block';
+                div4.style.display = 'none'
+            } 
+        };
+
+
+        document.getElementById('button4').onclick = function() {
+            
+            if (div4.style.display === 'none' || div4.style.display === '') {
+                div4.style.display = 'block';
+                div3.style.display = 'none'
+            } 
+        };
+
+        document.getElementById('close3').onclick = function() {
+           
+            div3.style.display = 'none';
+        }
+
+        document.getElementById('close4').onclick = function() {
+            
+            div4.style.display = 'none';
+        }
+        
+        var today = new Date().toISOString().split('T')[0];
+
+        // Select all date input fields
+        var dateInputs = document.querySelectorAll('input[type="date"]');
+
+        // Set the value of each date input to today's date
+        dateInputs.forEach(function(input) {
+            input.value = today;
+        });
+
+
+    function validatePassword1() {
+        // Get the password and confirm password values
+        const password1 = document.getElementById('password1').value;
+        const confirmPassword1 = document.getElementById('confirmPassword1').value;
+        const message1 = document.getElementById('message1');
+
+        // Check if the passwords match
+        if (password1 === confirmPassword1) {
+            message1.textContent = 'Passwords match.';
+            message1.className = 'success';
+            return true; // Allow form submission
+        } else {
+            message1.textContent = 'Passwords do not match.';
+            message1.className = 'error';
+            return false; // Prevent form submission
+        }
+    }
+    function validatePassword2() {
+        // Get the password and confirm password values
+        const password2 = document.getElementById('password2').value;
+        const confirmPassword2 = document.getElementById('confirmPassword2').value;
+        const message2 = document.getElementById('message2');
+
+        // Check if the passwords match
+        if (password2 === confirmPassword2) {
+            message2.textContent = 'Passwords match.';
+            message2.className = 'success';
+            return true; // Allow form submission
+        } else {
+            message2.textContent = 'Passwords do not match.';
+            message2.className = 'error';
+            return false; // Prevent form submission
+        }
+    }
+    function validatePassword3() {
+        // Get the password and confirm password values
+        const password3 = document.getElementById('password3').value;
+        const confirmPassword3 = document.getElementById('confirmPassword3').value;
+        const message3 = document.getElementById('message3');
+
+        // Check if the passwords match
+        if (password3 === confirmPassword3) {
+            message3.textContent = 'Passwords match.';
+            message3.className = 'success';
+            return true; // Allow form submission
+        } else {
+            message3.textContent = 'Passwords do not match.';
+            message3.className = 'error';
+            return false; // Prevent form submission
+        }
+    }
+    function validatePassword4() {
+        // Get the password and confirm password values
+        const password4 = document.getElementById('password4').value;
+        const confirmPassword4 = document.getElementById('confirmPassword4').value;
+        const message4 = document.getElementById('message4');
+
+        // Check if the passwords match
+        if (password4 === confirmPassword4) {
+            message4.textContent = 'Passwords match.';
+            message4.className = 'success';
+            return true; // Allow form submission
+        } else {
+            message4.textContent = 'Passwords do not match.';
+            message4.className = 'error';
+            return false; // Prevent form submission
+        }
+    }
+
+    var chalets_div = document.getElementById('chalets_div');
+            var users_div = document.getElementById('users_div');
+            var dashboard_div = document.getElementById('dashboard_div');
+
+    document.getElementById('chalets_tab').onclick = function() {
+            dashboard_div.style.display = "none";
+            users_div.style.display =  'none';
+            chalets_div.style.display =  '';
+        };
+
+        document.getElementById('users_tab').onclick = function() {
+            users_div.style.display =  '';
+            chalets_div.style.display =  'none';
+            dashboard_div.style.display = "none";
+        };
+
+        document.getElementById('dashboard_tab').onclick = function() {
+            users_div.style.display =  'none';
+            chalets_div.style.display =  'none';
+            dashboard_div.style.display = '';
+        };
+
+        
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        
+        const ctx1 = document.getElementById('costChart').getContext('2d');
+        const costChart = new Chart(ctx1, {
+            type: 'doughnut',
+            data: {
+                labels: ['Category 1', 'Category 2', 'Category 3', 'Category 4'],
+                datasets: [{
+                    label: 'Mean Cost',
+                    data: [300, 50, 100, 75],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return tooltipItem.label + ': $' + tooltipItem.raw;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Bar chart
+        const ctx2 = document.getElementById('ageChart').getContext('2d');
+        const ageChart = new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: ['0-18', '19-30', '31-50', '51+'],
+                datasets: [{
+                    label: 'User Ages',
+                    data: [50, 100, 75, 25],
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return tooltipItem.label + ': ' + tooltipItem.raw;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        
+    </script>
+    <script>
+         // Data for the chart
+         const countries = ['France', 'Switzerland', 'Austria', 'Italy', 'Germany'];
+        const numberOfChalets = [120, 95, 80, 65, 50];
+
+        // Create the chart
+        const ctx = document.getElementById('chaletCountChart').getContext('2d');
+        const chaletsChart = new Chart(ctx, {
+            type:'bar',  // Type of chart is bar
+            data: {
+                labels: countries,  // Labels for the horizontal axis
+                datasets: [{
+                    label: 'Number of Chalets',
+                    data: numberOfChalets,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 3
+                }]
+            },
+            options: {
+                indexAxis: 'y',  // This option makes the bar chart horizontal
+                scales: {
+                    x: {
+                        beginAtZero: true  // Ensure the x-axis starts at zero
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
