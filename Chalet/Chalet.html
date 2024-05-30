@@ -6,7 +6,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="Chalet.css">
     <title>Chalet Page</title>
-
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .carousel-item img {
+      width: 100%;
+      height: auto;
+    }
+</style>
 </head>
 <body>
 
@@ -53,11 +59,22 @@
     });
 </script>
 
-<hr size="1">
-<br><br><br>
+<hr size="30" >
+<br><br>
     <div class="container">
         <header>
-            <h1>Peaceful Getaway in Batroun District w/Pool</h1>
+            <h1><b>Peaceful Getaway in Batroun District w/Pool</b></h1>
+            <div class="parent">
+                <div class="user-actions">
+                    <a href="#" target="_blank">
+                        <img src="ImagesChalet/share.jpeg" alt="Share">  Share
+                    </a>
+                    <a href="#" target="_blank">
+                        <img src="ImagesChalet/save.jpeg" alt="Save">  Save
+                    </a>
+                  </div>
+            </div>
+            
         </header>
         <section class="main-content">
             <div class="listing-images">
@@ -73,38 +90,83 @@
                 </div>
             </div>
             
-           <!-- <div class="image-gallery">
-                <img src="ImagesChalet/image0.jpeg" alt="Main Image">
-                <div class="thumbnail-gallery">
-                    <img src="ImagesChalet/image1.jpeg" alt="Thumbnail 1">
-                    <img src="ImagesChalet/image2.jpeg" alt="Thumbnail 2">
-                    <img src="ImagesChalet/image3.jpeg" alt="Thumbnail 3">
-                    <img src="ImagesChalet/image4.jpeg" alt="Thumbnail 4">
-                </div>
-            </div>-->
+
             <div class="details">
-                <p>Entire home in Kour, Lebanon</p>
-                <p>10 guests · 3 bedrooms · 7 beds · 2 baths</p>
-                <p>Welcome to L'Auberge du Kour!<br>Discover the charm of this 3-bedroom house with an infinity pool and a lush garden located in Kour. Enjoy a unique holiday retreat with the finest views, within proximity to some of the best attractions in Batroun. Unwind, creating unforgettable memories at this exceptional getaway.</p>
-                <div class="more-photos">
-                    <h3>More Photos</h3>
+                <p><b>Entire home in Kour, Lebanon</b></p>
+                <p> 10 guests   3 bedrooms   7 beds   2 baths</p>
+                <hr size="30" >
+
+
+                <p><b>Welcome to L'Auberge du Kour!</b>
+                    <br>Discover the charm of this 3-bedroom house with an infinity pool and a lush garden located in Kour. Enjoy a unique holiday retreat with the finest views, within proximity to some of the best attractions in Batroun. Unwind, creating unforgettable memories at this exceptional getaway.</p>
+                    <hr size="30" >
+
+                    <section class="room-details">
+                        <div id="roomCarousel" class="carousel slide" data-ride="carousel">
+                          <div class="carousel-inner">
+                            <div class="carousel-item active">
+                              <img src="ImagesChalet/image5.jpeg" alt="Room Image 1">
+                            </div>
+                            <div class="carousel-item">
+                              <img src="ImagesChalet/image6.jpeg" alt="Room Image 2">
+                            </div>
+                            <div class="carousel-item">
+                              <img src="ImagesChalet/image0.jpeg" alt="Room Image 3">
+                            </div>
+                            <div class="carousel-item">
+                              <img src="ImagesChalet/image3.jpeg" alt="Room Image 4">
+                            </div>
+                          </div>
+                          <a class="carousel-control-prev" href="#roomCarousel" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                          </a>
+                          <a class="carousel-control-next" href="#roomCarousel" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                          </a>
+                        </div>
+                      </section>                     
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+                      
+                    <!--
+                    <section class="room-details">
+                        <div class="room-images">
+                            <img src="ImagesChalet/image5.jpeg" alt="Room Image 1" class="active">
+                            <img src="ImagesChalet/image6.jpeg" alt="Room Image 2">
+                            <img src="ImagesChalet/image0.jpeg" alt="Room Image 3">
+                            <img src="ImagesChalet/image3.jpeg" alt="Room Image 4">
+                        </div>
+                    -->
+
+<!--
+                    <div class="more-photos">
+                    <h3><b>More Photos</b></h3>
                     <div class="photo-thumbnails">
                         <div class="photo">Living room</div>
                         <div class="photo">Bedroom 3</div>
                     </div>
                 </div>
+            -->
+                <hr size="30" >
                 <div class="features">
-                    <h3>What the place offers:</h3>
+                    <h3><b>What the place offers:</b></h3>
                     <ul>
-                        <li>Indoor fireplace</li>
-                        <li>Wifi</li>
-                        <li>Air conditioning</li>
-                        <li>TV</li>
-                        <li>Jacuzzi</li>
-                        <li>Workspace</li>
+                        <li><img src="ImagesChalet/icons-06.png" alt="wifi">Wifi</li>
+                        <li><img src="ImagesChalet/icons-03.png" alt="Air conditioning">Air conditioning</li>
+                        <li><img src="ImagesChalet/icons-08.png" alt="Poll">Pool</li>
+                        <li><img src="ImagesChalet/icons-01.png" alt="TV">TV</li>
+                        <li><img src="ImagesChalet/icons-02.png" alt="Jacuzzi">Jacuzzi</li>
+                        <li><img src="ImagesChalet/icons-04.png" alt="cheminer">Cheminer</li>
+                        <li><img src="ImagesChalet/icons-05.png" alt="Outdoor kitchen">Outdoor kitchen</li>
+                        <li><img src="ImagesChalet/icons-07.png" alt="computer">Computer</li>
                     </ul>
                 </div>
             </div>
+            <hr size="30" >
+
             <div class="booking">
                 <div class="price">$250/night</div>
                 <form>
@@ -118,18 +180,37 @@
                 </form>
             </div>
         </section>
+        <hr size="30" >
+
         <section class="location">
             <h2>Where you'll be</h2>
-            <div class="map">
-                Map
+            <iframe
+             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13343.85898889347!2d35.19960240117512!3d33.26741521490568!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151e7d902f915d95%3A0xcf0e3fc6fb997408!2sTyre!5e0!3m2!1sen!2slb!4v1717112603814!5m2!1sen!2slb" 
+             width=100%
+             height="500" 
+             style="border:0;"
+             allowfullscreen=""
+             loading="lazy" 
+             referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+            <!-- <div class="map">
+                <a href="https://maps.google.com" target="_blank">
+                    <img src="ImagesChalet/maps.png" alt="Google Maps">
+                </a>
             </div>
+        -->
         </section>
+        <hr size="30" >
+
         <section class="contact">
             <h2>For more details contact the host</h2>
             <div class="contact-info">
                 <div class="contact-method">
                     <p>Phone Number</p>
-                    <img src="whatsapp-icon.png" alt="WhatsApp">
+                    <a href="https://wa.me/76915446" target="_blank">
+                        <img src="ImagesChalet/wattsapp.jpeg" alt="WhatsApp">
+                    </a>
+                    
                 </div>
                 <div class="host-details">
                     <p>Host details</p>
@@ -137,9 +218,17 @@
                     <p>Responds within an hour</p>
                 </div>
                 <div class="social-media">
-                    <img src="google-icon.png" alt="Google">
-                    <img src="facebook-icon.png" alt="Facebook">
-                    <img src="instagram-icon.png" alt="Instagram">
+                    <a href="https://WWW.google.com" target="_blank">
+                        <img src="ImagesChalet/google.jpeg" alt="Google">
+                    </a>
+                    <a href="https://www.facebook.com/ali.azzam.7758235?mibextid=ZbWKwL" target="_blank">
+                        <img src="ImagesChalet/face1.jpeg" alt="Facebook">
+                    </a>
+                    <a href="https://www.instagram.com/ali_azam0?igsh=NzIzc3h0cGtxYWc1" target="_blank">
+                        <img src="ImagesChalet/insta1.jpeg" alt="instagram">
+                    </a>
+                   
+                    
                 </div>
             </div>
         </section>
