@@ -133,32 +133,76 @@ header h1 {
     margin-bottom: 20px;
 }
 
-
 .listing-images {
+    display: flex;
+    width: 100%; /* Adjust width as needed */
+    margin: 0 auto;/* Center horizontally */
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 5px;
+
+}
+
+.main-image {
+    flex: 2; /* Set main image to take up twice the space */
+    overflow:auto; /* Hide overflowing parts if image is too large */
+    gap: 5px;
+}
+
+.main-image img {
+    width: 100%; /* Ensure main image fills the container */
+    object-fit: cover; /* Scale image to cover the container, cropping if necessary */
+    height: auto;
+    border-radius: 20px;
+    gap: 5px;
+
+
+}
+
+.thumbnail-images {
+    flex: 2; /* Set thumbnails to take up remaining space */
+    display: flex;
+    flex-wrap: wrap; /* Allow thumbnails to wrap onto multiple lines */
+    width: 50%;
+    margin-bottom: 50px;
+    gap: 5px;
+
+}
+
+.thumbnail-images img {
+   /* width: 48%; /* Set each thumbnail to take up half the available width */
+    margin-bottom: 10px; /* Add spacing between thumbnails */
+    object-fit: cover; /* Scale thumbnails to cover their containers */
+    width: calc(50% - 10px);
+    height: auto;
+    border-radius: 10px;
+}
+/*.listing-images {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    width: 80%;
+    width: 50%;
     margin: 0 auto;
     padding: 20px;
     /*display: flex;
     gap: 10px;
     margin-bottom: 20px;*/
-}
+/*}
 
 .main-image img {
-    width: 100%;
+    width: 50%;
     height: auto;
     border-radius: 10px;
 }
 
 .thumbnail-images {
-    width: 48%;
-    margin-bottom: 20px;
-    /*display: flex;
+   /* width: 48%;
+    margin-bottom: 20px;*/
+   /* display: flex;
     flex-wrap: wrap;
     gap: 10px;
- */
+ 
 }
 
 .thumbnail-images img {
@@ -167,7 +211,7 @@ header h1 {
     border-radius: 10px;
    
 }
-
+*/
 
 /*.thumbs{
     width: fit-content;
