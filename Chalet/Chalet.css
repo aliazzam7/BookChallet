@@ -136,8 +136,14 @@ header h1 {
 
 .listing-images {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    /*display: flex;
     gap: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 20px;*/
 }
 
 .main-image img {
@@ -147,10 +153,12 @@ header h1 {
 }
 
 .thumbnail-images {
-    display: flex;
+    width: 48%;
+    margin-bottom: 20px;
+    /*display: flex;
     flex-wrap: wrap;
     gap: 10px;
- 
+ */
 }
 
 .thumbnail-images img {
