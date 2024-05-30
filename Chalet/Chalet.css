@@ -132,7 +132,36 @@ header h1 {
     font-size: 24px;
     margin-bottom: 20px;
 }
-.thumbs{
+
+
+.listing-images {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.main-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.thumbnail-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+ 
+}
+
+.thumbnail-images img {
+    width: calc(50% - 10px);
+    height: auto;
+    border-radius: 10px;
+   
+}
+
+
+/*.thumbs{
     width: fit-content;
     display: flex;
     justify-content: center;
@@ -171,7 +200,7 @@ header h1 {
         width: 100px;
         height: 75px;
     }
-}
+}*/
 /*
 .main-content {
     display: flex;
