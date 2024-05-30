@@ -1,0 +1,148 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+}
+
+header h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.main-content {
+    display: flex;
+    gap: 20px;
+}
+
+.image-gallery {
+    flex: 1;
+}
+
+.image-gallery img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.thumbnail-gallery {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.thumbnail-gallery img {
+    width: calc(25% - 10px);
+    height: auto;
+}
+
+.details {
+    flex: 2;
+}
+
+.details p {
+    margin: 10px 0;
+}
+
+.more-photos {
+    margin-top: 20px;
+}
+
+.photo-thumbnails {
+    display: flex;
+    gap: 10px;
+}
+
+.photo {
+    flex: 1;
+    background-color: #ccc;
+    padding: 20px;
+    text-align: center;
+}
+
+.features ul {
+    list-style: none;
+    padding: 0;
+}
+
+.features li {
+    margin: 5px 0;
+}
+
+.booking {
+    flex: 1;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.booking .price {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.booking form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.booking label {
+    font-weight: bold;
+}
+
+.booking input, .booking button {
+    padding: 10px;
+    font-size: 16px;
+}
+
+.booking button {
+    background-color: #ff5a5f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.location, .contact {
+    margin-top: 40px;
+}
+
+.location h2, .contact h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.map {
+    width: 100%;
+    height: 300px;
+    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: #666;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contact-method, .host-details, .social-media {
+    text-align: center;
+}
+
+.social-media img {
+    width: 32px;
+    height: 32px;
+    margin: 0 10px;
+}
