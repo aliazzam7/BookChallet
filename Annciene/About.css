@@ -1,0 +1,207 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    font-family: 'Sorts Mill Goudy', sans-serif;
+}
+body {
+    width: 100%;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #EBF0F0;
+}
+.navbar-top {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #F5F5F5;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+.logo img {
+    width: 100px; /* Adjust as needed */
+}
+.navbar-top-center {
+    flex-grow: 1;
+    text-align: center;
+}
+.navbar-top-center a {
+    text-decoration: none;
+    color: #00507D;
+    padding: 10px 15px;
+    transition: background-color 0.3s;
+}
+.navbar-top-center a:hover {
+    background-color: #e0e0e0;
+}
+.navbar-top-right {
+    display: flex;
+    gap: 20px;
+}
+.navbar-top-right a {
+    text-decoration: none;
+    color: white;
+    background-color: #00507D;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+.navbar-top-right a:hover {
+    background-color: #0d88cf;
+}
+.sidebar {
+    position: fixed;
+    top: 60px; /* Adjust top position to accommodate the fixed navbar */
+    left: -30%;
+    height: calc(100% - 60px); /* Adjust height to fill remaining viewport */
+    width: 30%;
+    background-color: #00507D;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px; /* Adjust padding */
+    transition: left 0.3s ease-in-out;
+    z-index: 999;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: 0 10px 10px 0;
+}
+.sidebar.show {
+    left: 0;
+}
+.sidebar a {
+    text-decoration: none;
+    color: white;
+    padding: 15px 0;
+    width: 100%;
+    text-align: center;
+    transition: background-color 0.3s;
+    font-size: 18px;
+}
+.sidebar a:hover {
+    background-color: #0d88cf;
+}
+.sidebar .close-btn {
+    align-self: flex-end;
+    margin-right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+.content {
+    margin-top: 100px; 
+    padding: 20px;
+}
+.menu {
+    display: none;
+    background-color: #00507D;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 5px;
+}
+.menu:hover {
+    background-color: #0d88cf;
+}
+
+
+
+
+
+
+
+
+
+.row{
+    width: 100%;
+    max-width: 1300px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 40px;
+    overflow-x: hidden;
+    padding: 5rem 0;
+}
+.row .imgWrapper{
+    overflow: hidden;
+}
+.row .imgWrapper .img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.3s;
+
+}
+.row .contentWrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 30px;
+}
+
+.row .contentWrapper span.textWrapper{
+    display: block;
+    font-size: 35px;
+    margin-bottom: 20px;
+    color: #0d88cf;
+    text-transform: capitalize;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.row .contentWrapper h2{
+    font-size: 40px;
+    font-weight: 700;
+    color: #00507D;
+    padding-bottom: 20px;
+}
+.row .contentWrapper p{
+    font-size: 16px;
+    line-height: 25px;
+    padding-bottom: 15px;
+    color: black;
+}
+@media (max-width: 991){
+    .row{
+        grid-template-columns: 1fr;
+        grid-gap: 50px;
+    }
+    .row .contentWrapper{
+        padding-left: 0px;
+    }
+}
+
+@media (max-width: 768px){
+    .row{
+        width: 90px;
+    }
+    .row .contentWrapper h2{
+        font-size: 30px;
+        padding-bottom: 20px;
+    }
+    .row .contentWrapper p{
+        line-height: 24px;
+    }
+}
+@media (max-width: 575px){
+    .row .contentWrapper span.textWrapper{
+        font-size: 18px;
+    }
+    .row .contentWrapper h2{
+        font-size: 25px;
+    }
+    .row .contentWrapper p{
+        font-size: 15px;
+        line-height: 22px;
+    }
+    
+}

@@ -1,0 +1,461 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fdfdfdfd;
+ 
+}
+*{
+    font-family: 'Sorts Mill Goudy', sans-serif;
+}
+.navbar-top {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1px 10px;
+    background-color: #F5F5F5;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+.logo img {
+    width: 100px; /* Adjust as needed */
+}
+.navbar-top-center {
+    flex-grow: 1;
+    text-align: center;
+}
+.navbar-top-center a {
+    text-decoration: none;
+    color: #00507D;
+    padding: 10px 15px;
+    transition: background-color 0.3s;
+}
+.navbar-top-center a:hover {
+    background-color: #e0e0e0;
+}
+.navbar-top-right {
+    display: flex;
+    gap: 20px;
+}
+.navbar-top-right a {
+    text-decoration: none;
+    color: white;
+    background-color: #00507D;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+.navbar-top-right a:hover {
+    background-color: #0d88cf;
+}
+.sidebar {
+    position: fixed;
+    top: 60px; /* Adjust top position to accommodate the fixed navbar */
+    left: -30%;
+    height: calc(100% - 60px); /* Adjust height to fill remaining viewport */
+    width: 30%;
+    background-color: #00507D;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px; /* Adjust padding */
+    transition: left 0.3s ease-in-out;
+    z-index: 999;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: 0 10px 10px 0;
+}
+.sidebar.show {
+    left: 0;
+}
+.sidebar a {
+    text-decoration: none;
+    color: white;
+    padding: 15px 0;
+    width: 100%;
+    text-align: center;
+    transition: background-color 0.3s;
+    font-size: 18px;
+}
+.sidebar a:hover {
+    background-color: #0d88cf;
+}
+.sidebar .close-btn {
+    align-self: flex-end;
+    margin-right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+/*.content {
+    margin-top: 100px; 
+    padding: 20px;
+}*/
+.menu {
+    display: none;
+    background-color: #00507D;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 5px;
+}
+.menu:hover {
+    background-color: #0d88cf;
+}
+
+@media (max-width: 768px) {
+    .navbar-top-center, .navbar-top-right {
+        display: none;
+    }
+    .menu {
+        display: block;
+    }
+}
+/*hon el code css li tahet logo hene li tahet*/
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+
+h2 {
+    color: #000000;
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+   /* background-color: #6caae4fd;*/
+
+}
+
+
+.listing-images {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.main-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.thumbnail-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+ 
+}
+
+.thumbnail-images img {
+    width: calc(50% - 10px);
+    height: auto;
+    border-radius: 10px;
+   
+}
+
+
+
+/*tahet el code initial taab3 el design el adim lal image*/
+
+/*
+.gallery {
+    width: fit-content;*/
+    /*max-width: 1200px;*/
+ /*  
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    background-color: #fdfdfdfd;
+    border-radius: 15px;
+    overflow: hidden;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.thumbs {
+    width: fit-content;*/
+    /*height: 500px;*/
+    /*display: flex;
+    justify-content: center;
+    padding: 20px;
+    gap: 115px;
+}
+.thumbs img {
+   /* width: 120px;
+    height: 90px;*//*
+    width: 1050px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    width: fit-content;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.thumbs img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 600px) {
+    .main-img {
+        width: 100%;
+    }
+
+    .thumbs {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .thumbs img {
+        width: 100px;
+        height: 75px;
+    }
+}
+
+*/
+
+/*.initial {
+    display: flex;
+    justify-content: space-between; 
+    gap: 20px; 
+    max-width: 1200px; 
+    width: 100%;
+}*/
+
+.description{
+   /* background-color: rgb(24, 18, 51);*/
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /*width: fit-content;*/
+    height: fit-content;
+}
+
+.description h3 {
+    color: #EBF0F0;
+    margin-top: 0;
+    background-color: rgb(6, 3, 48);
+    width: fit-content;
+    height: fit-content;
+}
+
+.description ul {
+    list-style: none;
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(150px, 1fr));
+    gap: 20px;
+    padding: 0;
+}
+
+.description ul li{
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #000000;
+    background-color: #1a7ec0;
+    padding: 10px;
+    border-radius: 5px;
+    width: 300px;
+    height: fit-content
+}
+.description img{
+    width:100px;
+    height: 100px;
+}
+
+.offers, .item{
+     padding: 10px;
+     margin-bottom: 20px;
+     border-radius: 8px;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+     /*width: fit-content;*/
+     height: fit-content;
+ }
+ 
+ .offers h3,.item h3 {
+    color: #EBF0F0;
+     margin-top: 0;
+     background-color: rgb(6, 3, 48);
+     width: fit-content;
+     height: fit-content;
+ }
+ 
+ .offers ul {
+     list-style: none;
+ 
+     display: grid;
+     grid-template-columns: repeat(2, minmax(150px, 1fr));
+     gap: 20px;
+     padding: 0;
+ }
+ 
+ .offers ul li{
+     margin-bottom: 10px;
+     font-size: 16px;
+     color: #000000;
+     background-color: #a4a8ac;
+     padding: 10px;
+     border-radius: 5px;
+     width: 300px;
+     height: fit-content
+ }
+ .offers img{
+     width:100px;
+     height: 100px;
+ }
+
+/*Code tahet lal calender*/
+.availability h3{
+    color: #EBF0F0;
+    background-color: rgb(6, 3, 48);
+    width: fit-content;
+  
+}
+.calendar-container {
+    width: 300px;
+    margin: 0 auto;
+    text-align: center;
+}
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+.calendar-grid div {
+    padding: 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+.available {
+    /*background-color: #d4edda;*/
+    background-color: #33da33;
+}
+.booked {
+    /*background-color: #f8d7da;*/
+    background-color: #f50014;
+}
+.pending {
+    background-color: #fff3cd;
+}
+.legend {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+/*1 code*/
+/*
+.availability {
+    width: 90%;
+    max-width: 800px;
+    margin: 20px;
+    padding: 20px;
+    background-color: rgb(24, 18, 51);;
+    box-shadow: 0 4px 8px rgba(209, 101, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #EBF0F0;
+}
+
+.calendar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.calendar-header .nav {
+    cursor: alias;
+    font-weight: bold;
+
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    width: 100%;
+    text-align: center;
+    color: #ddd;
+}
+
+.calendar-grid div {
+    padding: 10px;
+    background-color: #020101;
+    border-radius: 5px;
+}
+
+.available {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.booked {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.pending {
+    background-color: #ffc107;
+    color: #fff;
+}
+
+.legend {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.legend span {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.legend .available {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.legend .pending {
+    background-color: #ffc107;
+    color: #fff;
+}
+
+.legend .booked {
+    background-color: #dc3545;
+    color: #fff;
+}
+*/

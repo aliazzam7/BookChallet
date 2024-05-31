@@ -1,0 +1,217 @@
+body {
+    background-color: #EBF0F0;
+}
+*{
+    font-family: 'Sorts Mill Goudy', sans-serif;
+}
+.navbar-top {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #F5F5F5;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+.logo img {
+    width: 100px; /* Adjust as needed */
+}
+.navbar-top-center {
+    flex-grow: 1;
+    text-align: center;
+}
+.navbar-top-center a {
+    text-decoration: none;
+    color: #00507D;
+    padding: 10px 15px;
+    transition: background-color 0.3s;
+}
+.navbar-top-center a:hover {
+    background-color: #e0e0e0;
+}
+.navbar-top-right {
+    display: flex;
+    gap: 20px;
+}
+.navbar-top-right a {
+    text-decoration: none;
+    color: white;
+    background-color: #00507D;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+.navbar-top-right a:hover {
+    background-color: #0d88cf;
+}
+.sidebar {
+    position: fixed;
+    top: 60px; /* Adjust top position to accommodate the fixed navbar */
+    left: -30%;
+    height: calc(100% - 60px); /* Adjust height to fill remaining viewport */
+    width: 30%;
+    background-color: #00507D;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px; /* Adjust padding */
+    transition: left 0.3s ease-in-out;
+    z-index: 999;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: 0 10px 10px 0;
+}
+.sidebar.show {
+    left: 0;
+}
+.sidebar a {
+    text-decoration: none;
+    color: white;
+    padding: 15px 0;
+    width: 100%;
+    text-align: center;
+    transition: background-color 0.3s;
+    font-size: 18px;
+}
+.sidebar a:hover {
+    background-color: #0d88cf;
+}
+.sidebar .close-btn {
+    align-self: flex-end;
+    margin-right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+.content {
+    margin-top: 100px; 
+    padding: 20px;
+}
+.menu {
+    display: none;
+    background-color: #00507D;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 5px;
+}
+.menu:hover {
+    background-color: #0d88cf;
+}
+
+
+
+
+*{  
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body{
+    min-height: 115vh;
+    background-color: #EBF0F0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container{
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    padding: 40px;
+    display: flex;
+    gap: 80px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 0 10px rgb(0, 0, 0, 0.1);
+}
+.left{
+    width: 60%;
+}
+.heading{
+    font-size: 35px;
+    font-weight: 600;
+    line-height: 1;
+    color: rgba(0, 0, 255, 0.584);
+}
+.text{
+    font-size: 14px;
+    font-weight: bold;
+    color: rgb(13, 94, 174);
+    margin-top: 10px;
+}
+form{
+    margin-top: 20px;
+}
+.inputbox{
+    position: relative;
+    margin-bottom: 20px;
+}
+.inputbox input,
+.inputbox textarea{
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    color: black;
+    border: none;
+    outline: none;
+    background-color: #F3F5F9;
+}
+.inputbox input::placeholder,
+.inputbox textarea::placeholder {
+    color: #444444;
+    opacity: 0.5;
+    font-size: 14px;
+}
+.inputbox textarea{
+    resize: none;
+    height: 150px;
+}
+.btn{
+    width: 100%;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    color: white;
+    background-color: rgba(0, 0, 255, 0.584);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.btn:hover {
+    background-color: #4b52d8;
+}
+.right{
+    width: 45%;
+}
+.myimg{
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+}
+.myimg img{
+    width: 100%;
+    margin: auto;
+    margin-top: 100px;
+    float: right;
+}
+
+@media (max-width: 768px) {
+    .container{
+        flex-direction: column;
+        gap: 40px;
+        padding: 20px;
+    }
+    .left,
+    .right {
+        width: 100%;
+    }
+}

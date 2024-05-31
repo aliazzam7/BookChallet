@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Wen?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+crossorigin="anonymous" />
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Sans+3:wght@200..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+ <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Noto+Serif&family=Nunito:ital,wght@0,200;1,200&family=Sassy+Frass&family=Sorts+Mill+Goudy&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+
+  <nav class="navbar-top">
+    <div class="logo"><img src="ImagesCopy/logopage00.png" alt="Company Logo"></div>
+    <div class="navbar-top-center">
+        <a href="Home.html">Home</a>
+        <a href="About.html">About</a>
+        <a href="ContactUs.html">Contact</a>
+    </div>
+    <div class="navbar-top-right">
+        <a href="user.html">Sign In</a>
+        <a href="signup.html">Sign Up</a>
+    </div>
+    </nav>
+  <div class="content">
+   
+    <div class="container">
+      <div class="cards" id="cards">
+        <div class="cards-front">
+          <div class="form-container">
+            <h1>Chalet Vacation Rentals in Lebanon</h1>
+            <p>Find and book unique Chalets on La Wen</p>
+            <form>
+              <label for="date">Date</label>
+              <input type="date" id="date" name="date" required>
+              <label for="location">Location</label>
+              <input type="text" id="location"name="location" placeholder="Enter location" required>
+              <label for="budget">Budget</label>
+              <input type="text" name="budget" placeholder="Enter budget">
+              <button type="submit">Search</button>
+              <button type="button" class="flip-button" onclick="flipCard()"> <i class="fas fa-arrow-right"></i></button>
+            </form>
+          </div>
+        </div>
+        <div class="cards-back">
+          <div class="form-container">
+            <h1>Chalet Vacation Rentals in Lebanon</h1>
+            <p>Find and book unique Chalets on La Wen</p>
+        
+            <p>We are here to help you with your vacation rental needs.</p>
+            <form>
+              <label for="name">Search</label>
+              <input type="text" id="name" name="name" placeholder="Search by name" required>
+              <button type="button" class="flip-button" onclick="flipCard()">Back <i class="fas fa-arrow-left"></i></button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <br><br>  <br><br>
+
+  <div class="container-fluid my-5">
+    <h4 class="rated">Top-rated chalet rentals in Lebanon</h4>
+    <p class="paragraph">Guests agree: these chalets are highly rated for location, cleanliness, and more</p>
+    <div class="row">
+        <div class="col-12 m-auto">
+            <div class="owl-carousel owl-theme">
+                <div class="item mb-4">
+                    <div class="card border-0 shadow">
+                        <img src="ImagesCopy/p2.jpg" alt="" class="card-img-top">
+                        <div class="card-body">
+                            <div class="card-title text-center">
+                                <h4> Mountain Haven</h4>
+                            </div>
+                            <p class="card-text" 
+                            <p class="card-text yellow-stars">
+                            <span class="text-warning">
+                              <i class="fas fa-star"></i>
+                              <i class="fas fa-star"></i>
+                              <i class="fas fa-star"></i>
+                              <i class="far fa-star"></i>
+                              <i class="far fa-star"></i>
+                            
+                          </span>
+                        </p>
+                            <p class="card-text">Snowpeak is a cheerful chalet located in arz
+
+                              Relax with the whole family at this peaceful place to stay.Snowpeak chalet Chalet 3 bedrooms- 2 toilets - kitchen - salon 50m with chimney</p> <!-- Description added -->
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="item mb-4">
+                    <div class="card border-0 shadow">
+                        <img src="ImagesCopy/card1.webp" alt="" class="card-img-top">
+                        <div class="card-body">
+                            <div class="card-title text-center">
+                                <h4>Chalet  Bmahray</h4>
+                            </div>
+                            <p class="card-text" 
+                            <p class="card-text yellow-stars">
+                            <span class="text-warning">
+                              <i class="fas fa-star"></i>
+                              <i class="fas fa-star"></i>
+                              <i class="fas fa-star"></i>
+                              <i class="far fa-star"></i>
+                              <i class="far fa-star"></i>
+                            
+                          </span>
+                        </p>
+                            <p class="card-text">Snowpeak is a cheerful chalet located in arz
+
+                              Relax with the whole family at this peaceful place to stay.Snowpeak chalet Chalet 3 bedrooms- 2 toilets - kitchen - salon 50m with chimney</p> <!-- Description added -->
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="item mb-4">
+                    <div class="card border-0 shadow">
+                        <img src="ImagesCopy/card2.webp" alt="" class="card-img-top">
+                        <div class="card-body">
+                            <div class="card-title text-center">
+                                <h4>Chalet  Ajaltoun
+                                </h4>
+                            </div>
+                            <p class="card-text" ></p>
+                            <p class="card-text yellow-stars">
+                            <span class="text-warning">
+                              <i class="fas fa-star"></i>
+                              <i class="fas fa-star"></i>
+                              <i class="fas fa-star"></i>
+                              <i class="far fa-star"></i>
+                              <i class="far fa-star"></i>
+                           
+                          </span>
+                        </p>
+                            <p class="card-text">Snowpeak is a cheerful chalet located in arz
+
+                              Relax with the whole family at this peaceful place to stay.Snowpeak chalet Chalet 3 bedrooms- 2 toilets - kitchen - salon 50m with chimney</p> <!-- Description added -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="item mb-4">
+                    <div class="card border-0 shadow">
+                        <img src="ImagesCopy/card2.webp" alt="" class="card-img-top">
+                        <div class="card-body">
+                            <div class="card-title text-center">
+                                <h4>Chalet in Batroun</h4>
+                            </div>
+                            <p class="card-text" 
+                            <p class="card-text yellow-stars">
+                            <span class="text-warning">
+                              <i class="fas fa-star"></i>
+                              <i class="fas fa-star"></i>
+                              <i class="fas fa-star"></i>
+                              <i class="far fa-star"></i>
+                              <i class="far fa-star"></i>
+                            
+                          </span>
+                        </p>
+                            <p class="card-text">Snowpeak is a cheerful chalet located in arz
+
+                              Relax with the whole family at this peaceful place to stay.Snowpeak chalet Chalet 3 bedrooms- 2 toilets - kitchen - salon 50m with chimney</p> <!-- Description added -->
+                        </div>
+                    </div>
+                </div>
+                <div class="item mb-4">
+                    <div class="card border-0 shadow">
+                        <img src="ImagesCopy/card1.webp" alt="" class="card-img-top">
+                        <div class="card-body">
+                            <div class="card-title text-center">
+                                <h4>Chalet in Tripoli</h4>
+                            </div>
+                            <p class="card-text" 
+                            <p class="card-text yellow-stars">
+                            <span class="text-warning">
+                              <i class="fas fa-star"></i>
+                              <i class="fas fa-star"></i>
+                              <i class="fas fa-star"></i>
+                              <i class="far fa-star"></i>
+                              <i class="far fa-star"></i>
+                            
+                          </span>
+                        </p>
+                            <p class="card-text">Snowpeak is a cheerful chalet located in arz
+
+                              Relax with the whole family at this peaceful place to stay.Snowpeak chalet Chalet 3 bedrooms- 2 toilets - kitchen - salon 50m with chimney</p> <!-- Description added -->
+                        </div>
+                    </div>
+                </div>
+                <div class="item mb-4">
+                    <div class="card border-0 shadow">
+                        <img src="ImagesCopy/card10.jpg" alt="" class="card-img-top">
+                        <div class="card-body">
+                            <div class="card-title text-center">
+                                <h4>Chalet in Jbeil</h4>
+                            </div>
+                            <p class="card-text" 
+                            <p class="card-text yellow-stars">
+                            <span class="text-warning">
+                              <i class="fas fa-star"></i>
+                              <i class="fas fa-star"></i>
+                              <i class="fas fa-star"></i>
+                              <i class="far fa-star"></i>
+                              <i class="far fa-star"></i>
+                            
+                          </span>
+                        </p>
+                            <p class="card-text">Snowpeak is a cheerful chalet located in arz
+
+                              Relax with the whole family at this peaceful place to stay.Snowpeak chalet Chalet 3 bedrooms- 2 toilets - kitchen - salon 50m with chimney</p> <!-- Description added -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+  </div>
+  <br><br><br><br>
+  <h4 class="ex">Exclusive Places </h4>
+  <div class="cart-container">
+  
+    <div class="cart-row">
+        <div class="cart"><img  src="ImagesCopy/eirut.jpg" alt=""> <p class="text">Beirut</p></div>
+        <div class="cart"><img src="ImagesCopy/trip.jpg" alt="Cart 2"><p class="text">Tripoli</p></div>
+        <div class="cart"><img src="ImagesCopy/r.jpg" alt="Cart 3"><p class="text">Batroun</p></div>
+        <div class="cart"><img src="ImagesCopy/a.jpg" alt="Cart 4"><p class="text">Baalback</p></div>
+    </div>
+    <div class="cart-row">
+        <div class="cart"><img src="ImagesCopy/te.jpg" alt="Cart 5"><p class="text">Tyr</p></div>
+        <div class="cart"><img src="ImagesCopy/o.jpg" alt="Cart 6"><p class="text">Nabatieh</p></div>
+        <div class="cart"><img src="ImagesCopy/ji.jpg" alt="Cart 7"><p class="text">Byblos</p></div>
+        <div class="cart"><img src="ImagesCopy/ha.jpg" alt="Cart 8"><p class="text">Harissa</p></div>
+    </div>
+</div>
+<br><br><br>
+<div class="footer">
+  <div class="waves">
+      <div class="wave"></div>
+  </div>
+  <div class="row">
+      <div class="col">
+          <div class="logo"><img src="ImagesCopy/logopage00.png" alt="" style="width: 200px;"></div>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio delectus quidem maiores sed voluptas architecto blanditiis ad dolor molestiae deserunt?</p>
+      </div>
+      <div class="col">
+          <ul>
+              <li><a href="Home.html">Home</a></li>
+              <li><a href="About.html">About</a></li>
+              <li><a href="ContactUs.html">Contact</a></li>
+          </ul>
+      </div>
+      <div class="col">
+          <ul>
+              <li>9616647444904</li>
+              <li>lawein@gmail.com</li>
+              <li>Lebanon</li>
+          </ul>
+      </div>
+      <div class="col">
+          <ul class="social-icons">
+              <li><i class="fab fa-facebook-f"></i></li>
+              <li><i class="fab fa-twitter"></i></li>
+              <li><i class="fab fa-instagram"></i></li>
+              <li><i class="fab fa-linkedin"></i></li>
+          </ul>
+      </div>
+  </div>
+  <p>&copy; 2024 || All rights received by Lawein</p>
+</div>
+</div> <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+    integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+    crossorigin="anonymous"></script>
+<script>
+    $('.owl-carousel').owlCarousel({
+        loop: true,
+        margin: 15,
+        nav: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 2
+            },
+            1000: {
+                items: 3
+            }
+        }
+    })
+</script>
+</body>
+  <script src="script.js"></script>
+</body>
+</html>
+
+
