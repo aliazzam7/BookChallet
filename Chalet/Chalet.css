@@ -384,9 +384,67 @@ hr{
     height: 50px;
 }
 
+.booking {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: auto;
+    text-align: center;
 
+    width: 50%;
+    height: 50%;
+  }
+  
+  .price {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  /*form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }*/
+/*.booking h2{
+    background-color: #666;
+    width: fit-content;
+    text-align: center;
+}*/
 
+  .booking form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;   
+}
+  
+  label {
+    text-align: left;
+    margin-bottom: 5px;
+  }
+  
+  input[type="date"],
+  input[type="number"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #ee0e0e;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
 
+/*
 .booking {
     flex: 1;
     border: 1px solid #015abe;
@@ -425,7 +483,7 @@ hr{
     border-radius: 5px;
     cursor: pointer;
 }
-
+*/
 
 
 

@@ -1,3 +1,18 @@
+document.addEventListener("DOMContentLoaded", function() {
+  const checkinInput = document.getElementById('checkin');
+  const checkoutInput = document.getElementById('checkout');
+
+  const today = new Date().toISOString().split('T')[0];
+  
+  checkinInput.setAttribute('min', today);
+  checkoutInput.setAttribute('min', today);
+  
+  checkinInput.addEventListener('change', function() {
+    const checkinDate = checkinInput.value;
+    checkoutInput.setAttribute('min', checkinDate);
+  });
+});
+  
   /*// Initialize and add the map
   function initMap() {
     // The location
