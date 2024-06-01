@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile, Equipments, and Rooms</title>
+  <link rel="stylesheet" href="Admin.css">
+</head>
+<body>
+  <div class="container active">
+    <div class="profile-picture">
+      <img src="iconsperson.png" alt="Profile Picture">
+    </div>
+    <div class="form-fields">
+      <div class="field">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" min="1" max="10" width="30" height="30">
+      </div>
+      <div class="field">
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" min="0" max="20" width="30" height="30">
+      </div>
+      <div class="field">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+      </div>
+
+      <div class="choose-name">
+        <h2>Choose Image</h2>
+        <div class="name-options">
+          <div class="name-option">
+            <input type="file" id="file-input-1" class="file-input" accept="image/*">
+            <button onclick="document.getElementById('file-input-1').click()">Choose File</button>
+            <img id="image-1" class="uploaded-image" src="" alt="Uploaded Image" style="display:none;">
+          </div>
+          <div class="name-option">
+            <input type="file" id="file-input-2" class="file-input" accept="image/*">
+            <button onclick="document.getElementById('file-input-2').click()">Choose File</button>
+            <img id="image-2" class="uploaded-image" src="" alt="Uploaded Image" style="display:none;">
+          </div>
+          <div class="name-option">
+            <input type="file" id="file-input-3" class="file-input" accept="image/*">
+            <button onclick="document.getElementById('file-input-3').click()">Choose File</button>
+            <img id="image-3" class="uploaded-image" src="" alt="Uploaded Image" style="display:none;">
+          </div>
+          <div class="name-option">
+            <input type="file" id="file-input-4" class="file-input" accept="image/*">
+            <button onclick="document.getElementById('file-input-4').click()">Choose File</button>
+            <img id="image-4" class="uploaded-image" src="" alt="Uploaded Image" style="display:none;">
+          </div>
+        </div>
+      </div>
+    
+      <div class="description">
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" aria-setsize="20"></textarea>
+      </div>
+      <button class="next-button">Next</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <h1>Equipments</h1>
+    <div class="equipment-grid">
+      <div class="equipment-item">
+        <div class="equipment-icon">Cheminer</div>
+        <input type="checkbox" class="equipment-checkbox">
+      </div>
+      <div class="equipment-item">
+        <div class="equipment-icon">Computers</div>
+        <input type="checkbox" class="equipment-checkbox">
+      </div>
+      <div class="equipment-item">
+        <div class="equipment-icon">Kitchen Outdoor</div>
+        <input type="checkbox" class="equipment-checkbox">
+      </div>
+      <div class="equipment-item">
+        <div class="equipment-icon">Pool</div>
+        <input type="checkbox" class="equipment-checkbox">
+      </div>
+      <div class="equipment-item">
+        <div class="equipment-icon">TV</div>
+        <input type="checkbox" class="equipment-checkbox">
+      </div>
+      <div class="equipment-item">
+        <div class="equipment-icon">Jacuzzi</div>
+        <input type="checkbox" class="equipment-checkbox">
+      </div>
+      <div class="equipment-item">
+        <div class="equipment-icon">AC</div>
+        <input type="checkbox" class="equipment-checkbox" checked>
+      </div>
+      <div class="equipment-item">
+        <div class="equipment-icon">Wifi</div>
+        <input type="checkbox" class="equipment-checkbox">
+      </div>
+    </div>
+    <button class="next-button">Next</button>
+  </div>
+  
+  
+  <div class="container">
+    <h1>Rooms</h1>
+    <div class="room-fields">
+      <div class="room-field">
+        <label for="bedroom">
+          <input type="checkbox" class="room-checkbox"> Bedroom
+        </label>
+        <input type="number" id="bedroom" name="bedroom" placeholder="Enter number" class="room-input">
+      </div>
+      <div class="room-field">
+        <label for="bathroom">
+          <input type="checkbox" class="room-checkbox"> Bathroom
+        </label>
+        <input type="number" id="bathroom" name="bathroom" placeholder="Enter number" class="room-input" aria-setsize="50">
+      </div>
+      <div class="room-field">
+        <label for="salon">
+          <input type="checkbox" class="room-checkbox"> Salon
+        </label>
+        <input type="number" id="salon" name="salon" placeholder="Enter number" class="room-input">
+      </div>
+      <div class="room-field">
+        <label for="bedroom-2">
+          <input type="checkbox" class="room-checkbox"> Bedroom
+        </label>
+        <input type="number" id="bedroom-2" name="bedroom-2" placeholder="Enter number" class="room-input">
+      </div>
+    </div>
+    <button class="save-button">Save</button>
+  </div>
+
+
+<!--  
+  <div class="container">
+    <h1>Rooms</h1>
+    <div class="room-fields">
+      <div class="room-field">
+        <label for="bedroom">Bedroom</label>
+        <input type="number" id="bedroom" name="bedroom" placeholder="Enter number">
+      </div>
+      <div class="room-field">
+        <label for="bathroom">Bathroom</label>
+        <input type="number" id="bathroom" name="bathroom" placeholder="Enter number">
+      </div>
+      <div class="room-field">
+        <label for="salon">Salon</label>
+        <input type="number" id="salon" name="salon" placeholder="Enter number">
+      </div>
+      <div class="room-field">
+        <label for="bedroom-2">Bedroom</label>
+        <input type="number" id="bedroom-2" name="bedroom-2" placeholder="Enter number">
+      </div>
+    </div>
+    <button class="save-button">Save</button>
+  </div>-->
+
+  <script src="Admin.js"></script>
+</body>
+</html>
+
+
+
+
+<!-- <!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile, Equipments, and Rooms</title>
+  <link rel="stylesheet" href="Admin.css">
+</head>
+<body>
+  <div class="container">
+    <div class="profile-picture">
+      <img src="iconsperson.png" alt="Profile Picture">
+    </div>
+    <div class="form-fields">
+      <div class="field">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+      </div>
+      <div class="field">
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone">
+      </div>
+      <div class="field">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+      </div>
+      <div class="choose-name">
+        <h2>Choose Name</h2>
+        <div class="name-options">
+          <button class="name-option">Choose File</button>
+          <button class="name-option">Choose File</button>
+          <button class="name-option">Choose File</button>
+          <button class="name-option">Choose File</button>
+        </div>
+      </div>
+      <div class="description">
+        <label for="description">Description:</label>
+        <textarea id="description" name="description"></textarea>
+      </div>
+      <button class="next-button">Next</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <h1>Equipments</h1>
+    <div class="equipment-grid">
+      <div class="equipment-item">
+        <div class="equipment-icon">AC</div>
+      </div>
+      <div class="equipment-item">
+        <div class="equipment-icon">AC</div>
+      </div>
+      <div class="equipment-item">
+        <div class="equipment-icon">AC</div>
+      </div>
+      <div class="equipment-item">
+        <div class="equipment-icon">AC</div>
+      </div>
+      <div class="equipment-item">
+        <div class="equipment-icon">AC</div>
+      </div>
+      <div class="equipment-item">
+        <div class="equipment-icon">AC</div>
+      </div>
+      <div class="equipment-item">
+        <div class="equipment-icon">AC</div>
+      </div>
+      <div class="equipment-item">
+        <div class="equipment-icon">AC</div>
+      </div>
+    </div>
+    <button class="next-button">Next</button>
+  </div>
+
+  <div class="container">
+    <h1>Rooms</h1>
+    <div class="room-fields">
+      <div class="room-field">
+        <label for="bedroom">Bedroom</label>
+        <input type="text" id="bedroom" name="bedroom" placeholder="Enter number">
+      </div>
+      <div class="room-field">
+        <label for="bathroom">Bathroom</label>
+        <input type="text" id="bathroom" name="bathroom" placeholder="Enter number">
+      </div>
+      <div class="room-field">
+        <label for="salon">Salon</label>
+        <input type="text" id="salon" name="salon" placeholder="Enter number">
+      </div>
+      <div class="room-field">
+        <label for="bedroom-2">Bedroom</label>
+        <input type="text" id="bedroom-2" name="bedroom-2" placeholder="Enter number">
+      </div>
+    </div>
+    <button class="save-button">Save</button>
+  </div>
+
+  <script src="Admin.js"></script>
+</body>
+</html>
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Page</title>
+  <link rel="stylesheet" href="Admin.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Equipments</a></li>
+        <li><a href="#">Rooms</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="profile-header">
+    <div class="profile-picture">
+        <img src="/Chalet/ImagesChalet/iconsperson.png" alt="admin profile" id="profileImage">
+    </div>
+    <div class="profile-info">
+        <p>Name: <input type="text" min="3" max="10" id="name" class="name"/></p>
+        <p>phone number: <input type="number" min="0" max="20" id="phoneNb" class="phoneNb"/></p>
+        <p>email: <input type="email" min="3" max="10" id="email" class="email"/></p>
+        <p>address: <input type="text" min="3" max="10" id="address" class="address"/></p>
+    </div>
+    <button class="logout-button">Logout</button>
+</div>
+
+  <div class="container">
+    <h1>Equipments</h1>
+    <div class="equipment-grid">
+
+      <div class="equipment-item">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="checkboxA">
+            <label class="form-check-label" for="checkboxA">AC</label>
+        </div>
+      </div>
+
+     <div class="equipment-item">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="checkboxA">
+            <label class="form-check-label" for="checkboxA">TV</label>
+        </div>
+      </div>
+
+      <div class="equipment-item">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="checkboxA">
+            <label class="form-check-label" for="checkboxA">Wifi</label>
+        </div>
+      </div>
+
+      <div class="equipment-item">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="checkboxA">
+            <label class="form-check-label" for="checkboxA">Computers</label>
+        </div>
+      </div>
+
+
+      <div class="equipment-item">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="checkboxA">
+            <label class="form-check-label" for="checkboxA">Cheminer</label>
+        </div>
+      </div>
+
+      <div class="equipment-item">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="checkboxA">
+            <label class="form-check-label" for="checkboxA">Pool</label>
+        </div>
+      </div>
+
+      <div class="equipment-item">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="checkboxA">
+            <label class="form-check-label" for="checkboxA">Jacuise</label>
+        </div>
+      </div>
+
+      <div class="equipment-item">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="checkboxA">
+            <label class="form-check-label" for="checkboxA">Kitcheen Outdoor</label>
+        </div>
+      </div>
+
+      <a href="AdminRooms.html">Next</a> 
+
+    <button class="next-button" >Next</button> 
+  </div>
+
+  <div class="container">
+    <h1>Rooms</h1>
+    <div class="room-fields">
+      <div class="room-field">
+        <label for="bedroom">Bedroom</label>
+        <input type="text" id="bedroom" name="bedroom" placeholder="Enter number">
+      </div>
+      <div class="room-field">
+        <label for="bathroom">Bathroom</label>
+        <input type="text" id="bathroom" name="bathroom" placeholder="Enter number">
+      </div>
+      <div class="room-field">
+        <label for="salon">Salon</label>
+        <input type="text" id="salon" name="salon" placeholder="Enter number">
+      </div>
+      <div class="room-field">
+        <label for="bedroom-2">Bedroom</label>
+        <input type="text" id="bedroom-2" name="bedroom-2" placeholder="Enter number">
+      </div>
+    </div>
+     <button class="save-button">Save</button> 
+  </div>
+
+  <script src="Admin.js"></script>
+</body>
+</html>
+-->
+
+
+
+
+
+<!-- <!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile</title>
+  <link rel="stylesheet" href="Admin.css">
+</head>
+<body>
+  <div class="container">
+    <div class="profile-picture">
+      <img src="/Chalet/ImagesChalet/iconsperson.png" alt="Profile Picture">
+    </div>
+    <div class="form-fields">
+      <div class="field">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+      </div>
+      <div class="field">
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone">
+      </div>
+      <div class="field">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+      </div>
+      <div class="choose-name">
+        <h2>Choose Image</h2>
+        <div class="name-options">
+          <button class="name-option">Choose File</button>
+          <button class="name-option">Choose File</button>
+          <button class="name-option">Choose File</button>
+          <button class="name-option">Choose File</button>
+        </div>
+      </div>
+      <div class="description">
+        <label for="description">Description:</label>
+        <textarea id="description" name="description"></textarea>
+      </div>
+      <button class="next-button">Next</button>
+    </div>
+  </div>
+
+
+  <div class="CEquipments">
+    <h1>Equipments</h1>
+    <div class="equipment-grid">
+      <div class="equipment-item">
+        <div class="equipment-icon">AC</div>
+      </div>
+      <div class="equipment-item">
+        <div class="equipment-icon">AC</div>
+      </div>
+      <div class="equipment-item">
+        <div class="equipment-icon">AC</div>
+      </div>
+      <div class="equipment-item">
+        <div class="equipment-icon">AC</div>
+      </div>
+      <div class="equipment-item">
+        <div class="equipment-icon">AC</div>
+      </div>
+      <div class="equipment-item">
+        <div class="equipment-icon">AC</div>
+      </div>
+      <div class="equipment-item">
+        <div class="equipment-icon">AC</div>
+      </div>
+      <div class="equipment-item">
+        <div class="equipment-icon">AC</div>
+      </div>
+    </div>
+    <button class="next-button">Next</button>
+  </div>
+
+
+  <div class="CRooms">
+    <h1>Rooms</h1>
+    <div class="room-fields">
+      <div class="room-field">
+        <label for="bedroom">Bedroom</label>
+        <input type="text" id="bedroom" name="bedroom" placeholder="Enter number">
+      </div>
+      <div class="room-field">
+        <label for="bathroom">Bathroom</label>
+        <input type="text" id="bathroom" name="bathroom" placeholder="Enter number">
+      </div>
+      <div class="room-field">
+        <label for="salon">Salon</label>
+        <input type="text" id="salon" name="salon" placeholder="Enter number">
+      </div>
+      <div class="room-field">
+        <label for="bedroom-2">Bedroom</label>
+        <input type="text" id="bedroom-2" name="bedroom-2" placeholder="Enter number">
+      </div>
+    </div>
+    <button class="save-button">Save</button>
+  </div>
+
+
+
+
+</body>
+</html>
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="Admin.css">
+</head>
+<body>
+    <div class="profile-header">
+        <div class="profile-picture">
+            <img src="/Chalet/ImagesChalet/iconsperson.png" alt="admin profile" id="profileImage">
+        </div>
+        <div class="profile-info">
+            <p>Name</p><input type="text" min="3" max="10" id="name" class="name"/>
+            <p>phone number</p><input type="number" min="0" max="20" id="phoneNb" class="phoneNb"/>
+            <p>email</p><input type="email" min="3" max="10" id="email" class="email"/>
+            <p>address</p><input type="text" min="3" max="10" id="address" class="address"/>
+        </div>
+        <button class="logout-button">Logout</button>
+    </div>
+    <div class="upload-section">
+        <h2>Choose Image</h2>
+        <div class="file-uploads">
+            <div class="file-upload">
+                <input type="file" class="form-control-file" id="image1" onchange="showPreview(event, 'preview1')">
+                <img id="preview1" class="img-preview" src="" >
+            </div>
+            <div class="file-upload">
+                <input type="file" class="form-control-file" id="image2" onchange="showPreview(event, 'preview1')">
+                <img id="preview1" class="img-preview" src="" >
+            </div>
+            <div class="file-upload">
+                <input type="file" class="form-control-file" id="image3" onchange="showPreview(event, 'preview1')">
+                <img id="preview1" class="img-preview" src="" >
+            </div>
+            <div class="file-upload">
+                <input type="file" class="form-control-file" id="image4" onchange="showPreview(event, 'preview1')">
+                <img id="preview1" class="img-preview" src="" >
+            </div>
+            <div class="file-upload">
+                <input type="file" class="form-control-file" id="image5" onchange="showPreview(event, 'preview1')">
+                <img id="preview1" class="img-preview" src="" >
+            </div>
+            <div class="file-upload"><input type="file" class="choose-file"></div> 
+             <div class="file-upload"><input type="file" class="choose-file"></div> 
+             <div class="file-upload"><input type="file" class="choose-file"></div> 
+             <div class="file-upload"><input type="file" class="choose-file"></div> 
+             <div class="file-upload"><input type="file" class="choose-file"></div> 
+        </div>
+        <textarea placeholder="Description"></textarea>
+        <a href="Admin2.html">Next</a>
+        <button class="next-button">Next</button>
+    </div>
+    <script src="Admin.js"></script>
+</body>
+</html>-->
