@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="super-admin.css">
+    
+    
+    <header class="header">
+        <div class="logo-custom float-start link-div" onclick="window.location.href='#'";>
+            <img src="images/la wen.png" alt="Company Logo">
+        </div>
+        
+        <div class="menu-item">Logout</div>
+    </header>
+   
+<body style=" background-color: rgba(221, 225, 225, 0.5);">
+    <div >
+                <div class="sidebar">
+                    <ul>
+                        
+                        <li><a href="#" id="dashboard_tab"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                        <li><a href="#" id="chalets_tab"><i class="fas fa-home"></i> Chalets</a></li>
+                        <li><a href="#" id="users_tab"><i class="fas fa-user""></i> Users</a></li>
+                    </ul>
+                </div>
+
+                <div id="dashboard_div" style="display:''" class="row flex-lg-nowrap">
+                    <div class="col mb-3">
+                        <div class="e-panel card">
+                            <div class="chart-container">
+                                <div class="circle-board">
+                                    <canvas id="costChart"></canvas>
+                                </div>
+
+                                <div class="rectangle-board">
+                                    <canvas id="ageChart"></canvas>
+
+                                    <div class="rectangle2-board">
+                                        <canvas id="chaletCountChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div id="chalets_div" style="display:none" class="row flex-lg-nowrap">
+                    <div class="col mb-3">
+                        <div class="e-panel card">
+                            <div class="card-body">
+                                <div class="card-title">
+                                    <div class="right-end">
+                                        <button id="button1" class="buttonuser">New Chalet</button>
+                                    </div>
+                                    <h6 class="mr-2" style="padding: 15px"><span>Chalets_Info</span></h6>
+                                </div>
+                                <div class="e-table">
+                                    <div class="table-responsive table-lg mt-3">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th class="max-width">Name</th>
+                                                    <th>Location</th>
+                                                    <th class="sortable">Date</th>
+                                                    <th>Active</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-nowrap align-middle">Leb Chalet</td>
+                                                    <td class="text-nowrap align-middle">Lebanon</td>
+                                                    <td class="text-nowrap align-middle"><span>09 Dec 2017</span></td>
+                                                    <td class="text-center align-middle">
+                                                        <label class="switch">
+                                                            <input type="checkbox">
+                                                            <span class="slider"></span>
+                                                        </label>
+                                                    </td>
+                                                    <td class="text-center align-middle">
+                                                        <div class="btn-group align-top">
+                                                            <button class="btn btn-sm btn-outline-secondary badge btn-blue " id="button2">Edit</button>
+                                                            <button class="btn btn-sm btn-outline-secondary badge btn-red" type="button">Delete</button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <ul class="pagination mt-3 mb-0">
+                                            <li class="disabled page-item"><a href="#" class="page-link">‹</a></li>
+                                            <li class="active page-item"><a href="#" class="page-link">1</a></li>
+                                            <li class="page-item"><a href="#" class="page-link">2</a></li>
+                                            <li class="page-item"><a href="#" class="page-link">›</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-3 mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div>
+                                    <div class="form-group">
+                                        <label>Date from - to:</label>
+                                        <div>
+                                            <input id="dates-range" class="form-control flatpickr-input" placeholder="01 Dec 17 - 27 Jan 18" type="text" readonly="readonly">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Search by Name:</label>
+                                        <div><input class="form-control w-100" type="text" placeholder="Name"></div>
+                                    </div>
+                                </div>
+                                <hr class="my-3">
+                                <div>
+                                    <label>Status:</label>
+                                    <div class="px-2">
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" class="custom-control-input" name="user-status" id="users-status-disabled">
+                                            <label class="custom-control-label" for="users-status-disabled">Disabled</label>
+                                        </div>
+                                    </div>
+                                    <div class="px-2">
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" class="custom-control-input" name="user-status" id="users-status-active">
+                                            <label class="custom-control-label" for="users-status-active">Active</label>
+                                        </div>
+                                    </div>
+                                    <div class="px-2">
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" class="custom-control-input" name="user-status" id="users-status-any" checked>
+                                            <label class="custom-control-label" for="users-status-any">Any</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="CreateChalet" style="display: none; ">
+                        
+                        <div class="modal-dialog modal-lg" role="document" ">
+                            <div class="modal-content" >
+                                <div class="modal-header" >
+                                    <h5 class="modal-title">Create Chalet</h5>
+                                    <button type="button" class="close" id="close1">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form class="form" id="registrationForm1" onsubmit="return validatePassword1()">
+                                        <div class="row">
+                                            <div class="col"><div class="form-group" >
+                                                <label>Chalet Name</label>
+                                                <input class="form-control" type="text" name="name" placeholder="Your Chalet Name" required>
+                                            </div></div>
+                                            <div class="col"><div class="form-group">
+                                                <label>Location</label>
+                                                <input class="form-control" type="text" name="Location" placeholder="Location" required>
+                                            </div></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col"><div class="form-group">
+                                                <label>Password</label>
+                                                <input class="form-control" type="password" placeholder="••••••" id="password1"  required>
+                                            </div></div>
+                                            <div class="col"><div class="form-group">
+                                                <label>Confirm Password</label>
+                                                <input class="form-control" type="password" placeholder="••••••" id="confirmPassword1"  required>
+                                                
+                                            </div></div>
+                                        </div>
+                                        
+                                        
+                                        
+                                        <span id="message1"></span>
+                                        <div class="form-group">
+                                            <label>Date</label>
+                                            <input class="form-control"  type="date" id="date" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <button class="btn btn-primary" style="align-items: right;" type="submit">Save</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="Edit" style="display: none;">
+                      
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Edit Chalet</h5>
+                                    <button type="button" class="close" id="close2">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form class="form" id="registrationForm2" onsubmit="return validatePassword2()">
+                                            <div class="row">
+                                                <div class="col"><div class="form-group" >
+                                                    <label>Chalet Name</label>
+                                                    <input class="form-control" type="text" name="name" placeholder="Your Chalet Name" required>
+                                                </div></div>
+                                                <div class="col"><div class="form-group">
+                                                    <label>Location</label>
+                                                    <input class="form-control" type="text" name="Location" placeholder="Location" required>
+                                                </div></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col"><div class="form-group">
+                                                    <label>Password</label>
+                                                    <input class="form-control" type="password" placeholder="••••••" id="password1"  required>
+                                                </div></div>
+                                                <div class="col"><div class="form-group">
+                                                    <label>Confirm Password</label>
+                                                    <input class="form-control" type="password" placeholder="••••••" id="confirmPassword1"  required>
+                                                    
+                                                </div></div>
+                                            </div>
+                                            
+                                            
+                                            
+                                            <span id="message1"></span>
+                                            <div class="form-group">
+                                                <label>Date</label>
+                                                <input class="form-control"  type="date" id="date" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <button class="btn btn-primary" y type="submit">Save</button>
+                                            </div>
+                                        </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div id="users_div" style="display: none;" class="row flex-lg-nowrap">
+                    <div class="col mb-3">
+                        <div class="e-panel card">
+                            <div class="card-body">
+                                <div class="card-title">
+                                    <div class="right-end">
+                                        <button id="button3" class="buttonuser">New User</button>
+                                    </div>
+                                    <h6 class="mr-2" style="padding: 15px"><span>Users_Info</span></h6>
+                                </div>
+                                <div class="e-table">
+                                    <div class="table-responsive table-lg mt-3">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th class="max-width">Name</th>
+                                                    <th>Location</th>
+                                                    <th class="sortable">Date of birth</th>
+                                                    <th>Phone number</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-nowrap align-middle">Alex</td>
+                                                    <td class="text-nowrap align-middle">Lebanon</td>
+                                                    <td class="text-nowrap align-middle"><span>02 08 1997</span></td>
+                                                    <td class="text-nowrap align-middle">961-71202785</td>
+                                                    <td class="text-center align-middle">
+                                                        <div class="btn-group align-top">
+                                                            <button class="btn btn-sm btn-outline-secondary badge btn-blue" id="button4">Edit</button>
+                                                            <button class="btn btn-sm btn-outline-secondary badge btn-red" type="button">Delete</button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <ul class="pagination mt-3 mb-0">
+                                            <li class="disabled page-item"><a href="#" class="page-link">‹</a></li>
+                                            <li class="active page-item"><a href="#" class="page-link">1</a></li>
+                                            <li class="page-item"><a href="#" class="page-link">2</a></li>
+                                            <li class="page-item"><a href="#" class="page-link">›</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-3 mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div>
+                                    <div class="form-group">
+                                        <label>Search by Number</label>
+                                        <div>
+                                            <input class="form-control w-100" type="PhoneNumber" placeholder="PhoneNumber">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Search by Name:</label>
+                                        <div><input class="form-control w-100" type="text" placeholder="Name"></div>
+                                    </div>
+                                </div>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="CreateUser" style="display: none; ">
+                        
+                        <div class="modal-dialog modal-lg" role="document" ">
+                            <div class="modal-content" >
+                                <div class="modal-header" >
+                                    <h5 class="modal-title">Create User</h5>
+                                    <button type="button" class="close" id="close3">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form class="form" id="registrationForm3" onsubmit="return validatePassword3()" >
+                                        <div class="form-group">
+                                            <label>Upload photo</label>
+                                            <input type="file">
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                            <div class="form-group">
+                                            <label>First Name</label>
+                                            <input class="form-control" type="text" name="name" placeholder="First Name" >
+                                            </div>
+                                            </div>
+                                            <div class="col">
+                                            <div class="form-group">
+                                            <label>Last Name</label>
+                                            <input class="form-control" type="text" name="Last Name" placeholder="Last Name" value="">
+                                            </div>
+                                            </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                <div class="form-group">
+                                                <label>Date of Birth</label>
+                                                <input class="form-control" type="date" name="Date of Birth" placeholder="Date of Birth" >
+                                                </div>
+                                                </div>
+                                                <div class="col">
+                                                <div class="form-group">
+                                                <label>Location</label>
+                                                <input class="form-control" type="text" name="Location" placeholder="Location" value="">
+                                                </div>
+                                                </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>PhoneNumber</label>
+                                                    <input class="form-control" type="text" name="PhoneNumber" placeholder="PhoneNumber" required>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Password</label>
+                                                        <input class="form-control" type="password" id="password3" placeholder="••••••" required>
+                                                    </div>
+                                                    </div>
+                                                    <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Confirm Password</label>
+                                                        <input class="form-control" type="password" id="confirmPassword3" placeholder="••••••" required>
+                                                    </div>
+                                                    </div>
+                                                    </div>
+                                                    <div class="text-center"><span id="message4"></span></div>
+
+                                        <div class="form-group">
+                                            <button class="btn btn-primary" type="submit">Save</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="EditUser" style="display: none;">
+                 
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Edit User</h5>
+                                    <button type="button" class="close" id="close4">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form class="form" id="registrationForm4" onsubmit="return validatePassword4()" >
+                                        
+                                        <div class="row">
+                                            <div class="col">
+                                            <div class="form-group">
+                                            <label>First Name</label>
+                                            <input class="form-control" type="text" name="name" placeholder="First Name" >
+                                            </div>
+                                            </div>
+                                            <div class="col">
+                                            <div class="form-group">
+                                            <label>Last Name</label>
+                                            <input class="form-control" type="text" name="Last Name" placeholder="Last Name" value="">
+                                            </div>
+                                            </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                <div class="form-group">
+                                                <label>Date of Birth</label>
+                                                <input class="form-control" type="date" name="Date of Birth" placeholder="Date of Birth" >
+                                                </div>
+                                                </div>
+                                                <div class="col">
+                                                <div class="form-group">
+                                                <label>Location</label>
+                                                <input class="form-control" type="text" name="Location" placeholder="Location" value="">
+                                                </div>
+                                                </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>PhoneNumber</label>
+                                                    <input class="form-control" type="text" name="PhoneNumber" placeholder="PhoneNumber" required>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Password</label>
+                                                        <input class="form-control" type="password" id="password4" placeholder="••••••" required>
+                                                    </div>
+                                                    </div>
+                                                    <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Confirm Password</label>
+                                                        <input class="form-control" type="password" id="confirmPassword4" placeholder="••••••" required>
+                                                    </div>
+                                                    </div>
+                                                    </div>
+                                                    <div class="text-center"><span id="message4"></span></div>
+
+                                        <div class="form-group">
+                                            <button class="btn btn-primary" type="submit">Save</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+   
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="super-admin.js"></script>
+
+</body>
+</html>
