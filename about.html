@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Sorts+Mill+Goudy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="about.css">
+    <title>About Us</title>
+
+</head>
+<body>
+    <nav class="navbar-top-custom">
+        <div class="logo-custom"><img src="./images/la wen.png" alt="Company Logo"></div>
+        <div class="navbar-top-center-custom">
+            <a href="test2.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <div class="navbar-top-right-custom">
+            <a href="user.html">Sign In</a>
+            <a href="signup.html">Sign Up</a>
+        </div>
+        <button class="menu-custom" onclick="toggleSidebar()">☰ Menu</button>
+    </nav>
+
+    <div class="sidebar-custom" id="sidebar-custom">
+        <span class="close-btn-custom" onclick="toggleSidebar()">×</span>
+        <a href="test2.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="user.html">Sign In</a>
+        <a href="signup.html">Sign Up</a>
+    </div>
+
+    
+    <div class="content-custom">
+        <div class="content-wrapper">
+            <h2>Welcome to lawein</h2>
+            <p style="text-align: justify;">Welcome to our premier destination for reserving chalets  in Lebanon 
+            <br>.Our platform offers a curated collection of exquisite chalets in picturesque 
+            <br>locations, ensuring an unforgettable getaway. With a seamless booking 
+            <br>experience and personalized service from inquiry to check-out, we strive 
+            <br>to make your stay effortless and enjoyable. Indulge in luxury amenities,
+            <br> benefit from local expertise, and choose from flexible options tailored 
+            <br>to your preferences. Discover the perfect chalet for your romantic escape, 
+            <br>family retreat, or weekend getaway with friends, and experience Lebanon
+            <br> like never before.
+        <div class="container2">
+                <div class="item">
+                  <h2 class="value" id="chalets">+6,898</h2>
+                  <p class="label">Number of Chalets</p>
+                </div>
+                <div class="item">
+                  <h2 class="value" id="customers">+5,178</h2>
+                  <p class="label">Number of Customers</p>
+                </div>
+                <div class="item">
+                  <h2 class="value" id="satisfied-customers">+4,000</h2>
+                  <p class="label">Satisfied Customers</p>
+                </div>
+              </div>  
+            </p>
+        </div>
+        <img src="./images/image1.jpeg" alt="About Image" class="content-image">
+    </div>
+    <br><br>
+    <section class="mission-section">
+        <div class="container4">
+          <div class="column">
+            <h2>Our Mission</h2>
+          </div>
+          <div class="column">
+            <p>At Lawein, our mission is to connect you with the most beautiful and exclusive chalets in Lebanon. 
+                We aim to provide a seamless user experience, ensuring your getaway is perfect. 
+                Whether you seek a cozy mountain retreat or a luxurious villa, 
+                our curated selection caters to all needs. Our experts offer personalized service and guidance, 
+                making booking effortless. We are passionate about hospitality and Lebanon's natural beauty, 
+                striving to exceed your expectations and create lasting memories.</p>
+
+        </div>
+        </div>
+      </section>
+      
+      <section class="why-choose-us">
+        <div class="container">
+            <h2>Why Choose Us?</h2>
+            <div class="row">
+                <div class="point">
+                    <div class="point-icon">
+                        <img src="./images/house.png" alt="Chalet Icon">
+                    </div>
+                    <div class="point-content">
+                        <h3>Extensive Selection of Chalets</h3>
+                        <p>Explore our diverse range of chalets, from charming retreats to luxurious havens, 
+                            all nestled in Lebanon's most picturesque locations.</p>
+                    </div>
+                </div>
+                <div class="point">
+                    <div class="point-icon">
+                        <img src="./images/search.png" alt="Search Icon">
+                    </div>
+                    <div class="point-content">
+                        <h3>User-Friendly Search and Booking</h3>
+                        <p>Effortlessly find your perfect chalet with our intuitive search function, 
+                            tailored to match your preferences and needs.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="point">
+                    <div class="point-icon">
+                        <img src="./images/check-mark.png" alt="Verified Icon">
+                    </div>
+                    <div class="point-content">
+                        <h3>Verified Listings</h3>
+                        <p>Rest assured knowing that each chalet listing undergoes rigorous verification 
+                            to guarantee superior quality and comfort.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar-custom');
+            sidebar.classList.toggle('show');
+        }
+    
+    </script>
+</body>
+</html>
