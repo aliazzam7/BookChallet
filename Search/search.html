@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Sorts+Mill+Goudy&display=swap" rel="stylesheet">
     
     <link href="search.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="search.js"></script>
     <title>Filter</title>
    
@@ -40,120 +41,12 @@
 </header>
 <body style="background-color: #f8f9fa;">
     
-    <div class="body1" >
+    <div id="card-container" class="body1" >
         
-        <div class="card">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="images/image(1).jpeg" class="img-fluid rounded-start" alt="Chalet in Jounieh">
-                </div>
-                <div class="col-md-5">
-                    <div class="card-body">
-                        <h5 class="card-title">Cedars Bliss Chalet<span style="color: black; font-size: medium;"> | Bsharri</span> </h5>
-                        <p class="card-text"> Serene mountain hideaway amid Bsharri's cedars, offering tranquility and nature's embrace.</p>
-                    </div>
-                </div>
-                <div class="col-md-3 price-column">
-                    <p style="font-size: 12px;">(20 reviews)</p>
-                    <span class="card__stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </span>
-                    <p>$200/night</p>
-                    <button class="btn btn-light">View Details</button>
-                </div>
-            </div>
-            <i class="fas fa-heart heart-icon" onclick="toggleHeart(this)"></i>
-        </div>
 
-        <div class="card">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="images/image(2).jpeg" class="img-fluid rounded-start" alt="Chalet in Batroun">
-                </div>
-                <div class="col-md-5">
-                    <div class="card-body">
-                        <h5 class="card-title">Mountain Haven Chalet<span style="color: black; font-size: medium;"> | Faraya</span> </h5>
-                        <p class="card-text">Cozy retreat overlooking Faraya's slopes, perfect for skiing and winter escapes.</p>
-                    </div>
-                </div>
-                <div class="col-md-3 price-column">
-                    <p style="font-size: 12px;">(20 reviews)</p>
-                    <span class="card__stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </span>
-                    <p>$380/night</p>
-                    <button class="btn btn-light">View Details</button>
-                </div>
-            </div>
-            <i class="fas fa-heart heart-icon" onclick="toggleHeart(this)"></i>
-        </div>
-    
-        <!-- Third Card -->
-        <div class="card">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="images/image(3).jpeg" class="img-fluid rounded-start" alt="Chalet in Jounieh">
-                </div>
-                <div class="col-md-5">
-                    <div class="card-body">
-                        <h5 class="card-title">Baalbek Retreat Chalet<span style="color: black; font-size: medium;"> | Baalbek</span> </h5>
-                        <p class="card-text">Historical charm meets relaxation in Baalbek, with cultural richness and scenic beauty.</p>
-                    </div>
-                </div>
-                <div class="col-md-3 price-column">
-                    <p style="font-size: 12px;">(20 reviews)</p>
-                    <span class="card__stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </span>
-                    <p>$250/night</p>
-                    <button class="btn btn-light">View Details</button>
-                </div>
-            </div>
-            <i class="fas fa-heart heart-icon" onclick="toggleHeart(this)"></i>
-        </div>
-    
-        <!-- Fourth Card -->
-        <div class="card">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="images/image(4).jpeg" class="img-fluid rounded-start" alt="Chalet in Jounieh">
-                </div>
-                <div class="col-md-5">
-                    <div class="card-body">
-                        <h5 class="card-title">Bekaa Valley Chalet<span style="color: black; font-size: medium;"> | Zahle</span> </h5>
-                        <p class="card-text">Zahle's vineyard escape, where breathtaking views and Lebanese hospitality create an unforgettable experience.</p>
-                    </div>
-                </div>
-                <div class="col-md-3 price-column">
-                    <p style="font-size: 12px;">(20 reviews)</p>
-                    <span class="card__stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </span>
-                    <p>$250/night</p>
-                    <button class="btn btn-light">View Details</button>
-                </div>
-            </div>
-            <i class="fas fa-heart heart-icon" onclick="toggleHeart(this)"></i>
-        </div>
 
     </div>
 
-
+    
 </body>
 </html>
