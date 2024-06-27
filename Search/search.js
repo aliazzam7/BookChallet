@@ -74,13 +74,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Clear existing content
             container.innerHTML = '';
-
+            if (data.error) {
+                container.innerHTML = `<p>${data.error}</p>`;
+                return;
+            }
             // Check if chalets array is empty
             if (data.chalets.length === 0) {
                 container.innerHTML = '<p>No chalets match your criteria.</p>';
                 return;
             }
-
+            
             // Loop through each chalet and create a card
             data.chalets.forEach((chalet) => {
                 const isWishlisted = data.wishlist.includes(chalet.id);

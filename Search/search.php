@@ -4,21 +4,40 @@ ini_set('display_errors', 0); // Set to 0 to hide errors in production
 
 require_once 'db_connection.php';
 
-
-$location = "new york  "; 
+$location = ""; 
 $budget = "  "; 
-$date = "  "; 
+$date_start = "2024-06-27"; // Example start date
+$date_end = "2024-06-10";   // Example end date
 
 $user_id = 3;
 
-// Trim whitespace from location, budget, and date variables
+// Trim whitespace from location and budget variables
 $location = trim($location);
 $budget = trim($budget);
-$date = trim($date);
 
+// Convert date strings to DateTime objects for comparison
+$date_start = new DateTime(trim($date_start));
+$date_end = new DateTime(trim($date_end));
 
+// Check if the start date is before the end date
+if ($date_start >= $date_end) {
+    $response = [
+        'error' => 'The start date must be earlier than the end date.',
+        'chalets' => [],
+        'wishlist' => []
+    ];
+    echo json_encode($response);
+    exit;
+}
 
-$reservedChaletsSql = "SELECT chalet_id FROM reservation WHERE '$date' >= `check-in` AND '$date' < `check-out`";
+// Fetch reserved chalets within the date range
+$reservedChaletsSql = "
+    SELECT chalet_id 
+    FROM reservation 
+    WHERE (
+        (`check-in` < '" . $date_end->format('Y-m-d') . "' AND `check-out` > '" . $date_start->format('Y-m-d') . "')
+    )
+";
 $reservedResult = $conn->query($reservedChaletsSql);
 
 $reservedChaletIds = [];
@@ -28,6 +47,7 @@ while ($row = $reservedResult->fetch_assoc()) {
 
 $reservedChaletIdsStr = implode(',', $reservedChaletIds);
 
+// Construct the main SQL query
 $sql = "SELECT id, name, location, price, description, image FROM chalet";
 
 if (!empty($location)) {
@@ -49,6 +69,7 @@ while ($row = $result->fetch_assoc()) {
     $chalets[] = $row;
 }
 
+// Fetch wishlist chalets for the user
 $wishlistSql = "SELECT chalet_id FROM whishlist WHERE user_id = $user_id";
 $wishlistResult = $conn->query($wishlistSql);
 
