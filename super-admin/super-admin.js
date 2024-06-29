@@ -1,273 +1,304 @@
-var div1 = document.getElementById('CreateChalet');
-var div2 = document.getElementById('Edit');
-var div3 = document.getElementById('CreateUser');
-var div4 = document.getElementById('EditUser');
-document.getElementById('button1').onclick = function() {
-    
-    if (div1.style.display === 'none' || div1.style.display === '') {
-        div1.style.display = 'block';
-        div2.style.display = 'none'
-    } 
-};
+document.addEventListener('DOMContentLoaded', function() {
+    // Fetch and display chalets initially
+    fetchChalets();
 
+    // Event listeners for tabs
+    document.getElementById('chalets_tab').addEventListener('click', function(event) {
+        event.preventDefault();
+        hideAllTabs();
+        document.getElementById('chalets_div').style.display = '';
+        fetchChalets();
+    });
 
-document.getElementById('button2').onclick = function() {
-    
-    if (div2.style.display === 'none' || div2.style.display === '') {
-        div2.style.display = 'block';
-        div1.style.display = 'none'
-    } 
-};
+    document.getElementById('users_tab').addEventListener('click', function(event) {
+        event.preventDefault();
+        hideAllTabs();
+        document.getElementById('users_div').style.display = '';
+        fetchUsers();
+    });
 
-document.getElementById('close1').onclick = function() {
-   
-    div1.style.display = 'none';
-}
+    document.getElementById('dashboard_tab').addEventListener('click', function(event) {
+        event.preventDefault();
+        hideAllTabs();
+        document.getElementById('dashboard_div').style.display = '';
+        fetchDashboardData();
+    });
 
-document.getElementById('close2').onclick = function() {
-   
-    div2.style.display = 'none';
-}
+    // Function to hide all tab content
+    function hideAllTabs() {
+        document.getElementById('chalets_div').style.display = 'none';
+        document.getElementById('users_div').style.display = 'none';
+        document.getElementById('dashboard_div').style.display = 'none';
+    }
 
-document.getElementById('button3').onclick = function() {
-    
-    if (div3.style.display === 'none' || div3.style.display === '') {
-        div3.style.display = 'block';
-        div4.style.display = 'none'
-    } 
-};
+    // Fetch chalets from the server
+    function fetchChalets() {
+        fetch('fetch-chalets.php')
+            .then(response => response.json())
+            .then(data => {
+                displayChalets(data);
+            })
+            .catch(error => console.error('Error fetching chalets:', error));
+    }
 
+    // Display chalets in the table
+    function displayChalets(chalets) {
+        const chaletsTable = document.getElementById('chalets_table');
+        chaletsTable.innerHTML = ''; // Clear previous content
 
-document.getElementById('button4').onclick = function() {
-    
-    if (div4.style.display === 'none' || div4.style.display === '') {
-        div4.style.display = 'block';
-        div3.style.display = 'none'
-    } 
-};
+        chalets.forEach(chalet => {
+            const row = `
+                <tr>
+                    <td>${chalet.name}</td>
+                    <td>${chalet.location}</td>
+                    <td>${chalet.price}</td>
+                    <td>${chalet.capacity}</td>
+                    <td>${chalet.description}</td>
+                    <td>${chalet.date_added}</td>
+                    <td>
+                        <button class="btn btn-primary edit-chalet" data-id="${chalet.id}">Edit</button>
+                        <button class="btn btn-danger delete-chalet" data-id="${chalet.id}">Delete</button>
+                    </td>
+                </tr>
+            `;
+            chaletsTable.innerHTML += row;
+        });
 
-document.getElementById('close3').onclick = function() {
-   
-    div3.style.display = 'none';
-}
+        // Add event listeners for edit and delete buttons
+        document.querySelectorAll('.edit-chalet').forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                const chaletId = this.getAttribute('data-id');
+                openEditChaletModal(chaletId);
+            });
+        });
 
-document.getElementById('close4').onclick = function() {
-    
-    div4.style.display = 'none';
-}
+        document.querySelectorAll('.delete-chalet').forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                const chaletId = this.getAttribute('data-id');
+                if (confirm('Are you sure you want to delete this chalet?')) {
+                    deleteChalet(chaletId);
+                }
+            });
+        });
+    }
 
-var today = new Date().toISOString().split('T')[0];
+    // Function to delete a chalet
+    function deleteChalet(chaletId) {
+        fetch('delete-chalet.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ id: chaletId }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Handle success or show error messages
+            console.log(data);
+            fetchChalets(); // Reload chalets after deletion
+        })
+        .catch(error => {
+            console.error('Error deleting chalet:', error);
+        });
+    }
 
+    // Function to open edit chalet modal (implement as needed)
+    function openEditChaletModal(chaletId) {
+        // Implement your modal logic here
+        console.log('Editing chalet with ID:', chaletId);
+    }
 
-var dateInputs = document.querySelectorAll('input[type="date"]');
+    // Fetch users from the server
+    function fetchUsers() {
+        fetch('fetch-users.php')
+            .then(response => response.json())
+            .then(data => {
+                displayUsers(data);
+            })
+            .catch(error => console.error('Error fetching users:', error));
+    }
 
+    // Display users in the table
+    function displayUsers(users) {
+        const usersTable = document.getElementById('users_table');
+        usersTable.innerHTML = ''; // Clear previous content
 
-dateInputs.forEach(function(input) {
-    input.value = today;
+        users.forEach(user => {
+            const row = `
+                <tr>
+                    <td>${user.username}</td>
+                    <td>${user.email}</td>
+                    <td>${user.role}</td>
+                    <td>${user.date_registered}</td>
+                    <td>
+                        <button class="btn btn-primary edit-user" data-id="${user.id}">Edit</button>
+                        <button class="btn btn-danger delete-user" data-id="${user.id}">Delete</button>
+                    </td>
+                </tr>
+            `;
+            usersTable.innerHTML += row;
+        });
+
+        // Add event listeners for edit and delete buttons
+        document.querySelectorAll('.edit-user').forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                const userId = this.getAttribute('data-id');
+                openEditUserModal(userId);
+            });
+        });
+
+        document.querySelectorAll('.delete-user').forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                const userId = this.getAttribute('data-id');
+                if (confirm('Are you sure you want to delete this user?')) {
+                    deleteUser(userId);
+                }
+            });
+        });
+    }
+
+    // Function to delete a user
+    function deleteUser(userId) {
+        fetch('delete-user.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ id: userId }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Handle success or show error messages
+            console.log(data);
+            fetchUsers(); // Reload users after deletion
+        })
+        .catch(error => {
+            console.error('Error deleting user:', error);
+        });
+    }
+
+    // Function to open edit user modal (implement as needed)
+    function openEditUserModal(userId) {
+        // Implement your modal logic here
+        console.log('Editing user with ID:', userId);
+    }
+
+    // Fetch dashboard data (if needed)
+    function fetchDashboardData() {
+        // Implement fetching and displaying dashboard data if required
+    }
 });
 
-
-function validatePassword1() {
-
-const password1 = document.getElementById('password1').value;
-const confirmPassword1 = document.getElementById('confirmPassword1').value;
-const message1 = document.getElementById('message1');
-
-
-if (password1 === confirmPassword1) {
-    message1.textContent = 'Passwords match.';
-    message1.className = 'success';
-    return true;
-} else {
-    message1.textContent = 'Passwords do not match.';
-    message1.className = 'error';
-    return false; 
-}
-}
-function validatePassword2() {
-
-const password2 = document.getElementById('password2').value;
-const confirmPassword2 = document.getElementById('confirmPassword2').value;
-const message2 = document.getElementById('message2');
-
-
-if (password2 === confirmPassword2) {
-    message2.textContent = 'Passwords match.';
-    message2.className = 'success';
-    return true; 
-} else {
-    message2.textContent = 'Passwords do not match.';
-    message2.className = 'error';
-    return false;
-}
-}
-function validatePassword3() {
-
-const password3 = document.getElementById('password3').value;
-const confirmPassword3 = document.getElementById('confirmPassword3').value;
-const message3 = document.getElementById('message3');
-
-
-if (password3 === confirmPassword3) {
-    message3.textContent = 'Passwords match.';
-    message3.className = 'success';
-    return true; 
-} else {
-    message3.textContent = 'Passwords do not match.';
-    message3.className = 'error';
-    return false; 
-}
-}
-function validatePassword4() {
-
-const password4 = document.getElementById('password4').value;
-const confirmPassword4 = document.getElementById('confirmPassword4').value;
-const message4 = document.getElementById('message4');
-
-
-if (password4 === confirmPassword4) {
-    message4.textContent = 'Passwords match.';
-    message4.className = 'success';
-    return true; 
-} else {
-    message4.textContent = 'Passwords do not match.';
-    message4.className = 'error';
-    return false; 
-}
-}
-
-var chalets_div = document.getElementById('chalets_div');
-    var users_div = document.getElementById('users_div');
-    var dashboard_div = document.getElementById('dashboard_div');
-
-document.getElementById('chalets_tab').onclick = function() {
-    dashboard_div.style.display = "none";
-    users_div.style.display =  'none';
-    chalets_div.style.display =  '';
-};
-
-document.getElementById('users_tab').onclick = function() {
-    users_div.style.display =  '';
-    chalets_div.style.display =  'none';
-    dashboard_div.style.display = "none";
-};
-
-document.getElementById('dashboard_tab').onclick = function() {
-    users_div.style.display =  'none';
-    chalets_div.style.display =  'none';
-    dashboard_div.style.display = '';
-};
-
-
-
-
-
-const ctx1 = document.getElementById('costChart').getContext('2d');
-        const costChart = new Chart(ctx1, {
-            type: 'doughnut',
-            data: {
-                labels: ['Category 1', 'Category 2', 'Category 3', 'Category 4'],
-                datasets: [{
-                    label: 'Mean Cost',
-                    data: [300, 50, 100, 75],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'top',
-                    },
-                    tooltip: {
-                        callbacks: {
-                            label: function(tooltipItem) {
-                                return tooltipItem.label + ': $' + tooltipItem.raw;
-                            }
-                        }
-                    }
-                }
-            }
-        });
-
-        // Bar chart
-        const ctx2 = document.getElementById('ageChart').getContext('2d');
-        const ageChart = new Chart(ctx2, {
-            type: 'bar',
-            data: {
-                labels: ['0-18', '19-30', '31-50', '51+'],
-                datasets: [{
-                    label: 'User Ages',
-                    data: [50, 100, 75, 25],
-                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
+// Additional JavaScript for Charts
+document.addEventListener('DOMContentLoaded', (event) => {
+    fetch('price-data.php')
+        .then(response => response.json())
+        .then(data => {
+            const prices = data.map(item => '$' + item.price); // Add $ to each price
+            const counts = data.map(item => item.count);
+            
+            const ctx1 = document.getElementById('costChart').getContext('2d');
+            const costChart = new Chart(ctx1, {
+                type: 'doughnut',
+                data: {
+                    labels: prices, // Use prices with $ as labels
+                    datasets: [{
+                        label: 'Number of Chalets',
+                        data: counts,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
                 },
-                plugins: {
-                    legend: {
-                        position: 'top',
-                    },
-                    tooltip: {
-                        callbacks: {
-                            label: function(tooltipItem) {
-                                return tooltipItem.label + ': ' + tooltipItem.raw;
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(tooltipItem) {
+                                    let label = tooltipItem.label || '';
+
+                                    if (label) {
+                                        label += ': ' + tooltipItem.raw + ' chalets';
+                                    }
+
+                                    return label;
+                                }
                             }
                         }
                     }
                 }
-            }
-        });
+            });
+        })
+        .catch(error => console.error('Error fetching data:', error));
+});
 
-
-
-
-
-         // Data for the chart
-         const countries = ['France', 'Switzerland', 'Austria', 'Italy', 'Germany'];
-        const numberOfChalets = [120, 95, 80, 65, 50];
-
-        // Create the chart
-        const ctx = document.getElementById('chaletCountChart').getContext('2d');
-        const chaletsChart = new Chart(ctx, {
-            type:'bar',  // Type of chart is bar
-            data: {
-                labels: countries,  // Labels for the horizontal axis
-                datasets: [{
-                    label: 'Number of Chalets',
-                    data: numberOfChalets,
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 3
-                }]
-            },
-            options: {
-                indexAxis: 'y',  // This option makes the bar chart horizontal
-                scales: {
-                    x: {
-                        beginAtZero: true  // Ensure the x-axis starts at zero
+// Bar chart
+document.addEventListener('DOMContentLoaded', (event) => {
+    fetch('age-data.php')
+        .then(response => response.json())
+        .then(data => {
+            const labels = data.labels;
+            const counts = data.counts;
+            
+            const ctx2 = document.getElementById('ageChart').getContext('2d');
+            const ageChart = new Chart(ctx2, {
+                type: 'bar',
+                data: {
+                    labels: labels, // Use labels as categories
+                    datasets: [{
+                        label: 'User Ages',
+                        data: counts,
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(tooltipItem) {
+                                    return tooltipItem.raw + ' users';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            beginAtZero: true
+                        },
+                        y: {
+                            beginAtZero: true
+                        }
                     }
                 }
-            }
-        });
-
-        
+            });
+        })
+        .catch(error => console.error('Error fetching data:', error));
+});
