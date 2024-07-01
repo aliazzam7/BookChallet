@@ -1,14 +1,22 @@
 <?php
 require_once 'db_connection.php';
 
-$query = "SELECT price, COUNT(*) as count FROM chalet GROUP BY price";
-$result = $conn->query($query);
+$sql = 'SELECT price, COUNT(*) as count FROM chalet GROUP BY price';
+$result = $conn->query($sql);
 
-$data = array();
+$data = [];
 
-while ($row = $result->fetch_assoc()) {
-    $data[] = $row;
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        $data[] = [
+            'price' => $row['price'],
+            'count' => $row['count']
+        ];
+    }
 }
 
+$conn->close();
+
+header('Content-Type: application/json');
 echo json_encode($data);
 ?>

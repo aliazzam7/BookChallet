@@ -206,6 +206,8 @@
             border-color: blue;
         }
 
-        
+        .hidden {
+            display: none;
+        }
         
         
