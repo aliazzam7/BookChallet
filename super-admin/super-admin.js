@@ -25,10 +25,15 @@ document.getElementById('close1').onclick = function() {
     div1.style.display = 'none';
 }
 
-document.getElementById('close2').onclick = function() {
-   
-    div2.style.display = 'none';
-}
+// Event listener for dynamically created edit divs
+document.addEventListener('click', function(event) {
+    // Check if the clicked element is a close button within an edit div
+    if (event.target.classList.contains('edit-div')) {
+        const editDiv = event.target;
+        editDiv.style.display = 'none';
+    }
+});
+
 
 document.getElementById('button3').onclick = function() {
     
@@ -99,7 +104,8 @@ const message2 = document.getElementById('message2');
 if (password2 === confirmPassword2) {
     message2.textContent = 'Passwords match.';
     message2.className = 'success';
-    return true; 
+    update();
+    return false; 
 } else {
     message2.textContent = 'Passwords do not match.';
     message2.className = 'error';
@@ -338,7 +344,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
                             deleteChalet(chaletId);
                         });
                     });
-
+                    document.querySelectorAll('.btn-blue').forEach(button => {
+                        button.addEventListener('click', function() {
+                            const chaletId = this.getAttribute('data-id');
+                            const chaletname = this.getAttribute('data-name');
+                            const location = this.getAttribute('data-location');
+                            const date = this.getAttribute('data-date');
+                            EditChalet(chaletId,chaletname,location,date);
+                        });
+                    });
                     
                 }
             });
@@ -435,4 +449,49 @@ function setDefaultDate() {
     });
 }
      
+function EditChalet(chaletId,chaletname,location,date) {
+    div2.innerHTML += '<input type="hidden" name="chaletId" value='+chaletId+'>'; 
+    div2.style.display = "block";
+    document.querySelector('#Edit input[name="name"]').value = chaletname;
+    document.querySelector('#Edit input[name="Location"]').value = location;
+    document.querySelector('#Edit #date2').value = date;
+    
+  }
+  function update() {
+    // Get the values from the input fields
+    const chaletId = document.querySelector('#Edit input[name="chaletId"]').value; // Assuming you have a hidden input field for chaletId
+    const chaletName = document.querySelector('#Edit input[name="name"]').value;
+    const location = document.querySelector('#Edit input[name="Location"]').value;
+    const date = document.querySelector('#Edit #date2').value;
 
+    // Create an object with the data
+    const data = {
+        chaletId: chaletId,
+        name: chaletName,
+        location: location,
+        date: date
+    };
+
+    // Send the data to the server using fetch (AJAX request)
+    fetch('update_chalet.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert('Chalet updated successfully!');
+            // Optionally, hide the modal and refresh the chalet list
+            document.getElementById("Edit").style.display = "none";
+            fetchChalets();
+        } else {
+            alert('Failed to update chalet.');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
