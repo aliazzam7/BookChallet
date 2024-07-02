@@ -12,27 +12,18 @@ document.getElementById('button1').onclick = function() {
 };
 
 
-/*document.getElementById('button2').onclick = function() {
-    
-    if (div2.style.display === 'none' || div2.style.display === '') {
-        div2.style.display = 'block';
-        div1.style.display = 'none'
-    } 
-};*/
 
 document.getElementById('close1').onclick = function() {
    
     div1.style.display = 'none';
 }
 
-// Event listener for dynamically created edit divs
-document.addEventListener('click', function(event) {
-    // Check if the clicked element is a close button within an edit div
-    if (event.target.classList.contains('edit-div')) {
-        const editDiv = event.target;
-        editDiv.style.display = 'none';
-    }
-});
+function closeEditDiv() {
+    document.getElementById("Edit").style.display = "none";
+    
+  }
+
+
 
 
 document.getElementById('button3').onclick = function() {
@@ -230,16 +221,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
         // Process locationData
         const locations = locationData.map(item => item.location);
         const locationCounts = locationData.map(item => item.count);
-
+        
         const ctx2 = document.getElementById('chaletCountChart').getContext('2d');
         const chaletsChart = new Chart(ctx2, {
             type: 'bar',
             data: {
                 labels: locations,
                 datasets: [{
-                    label: function(context) {
-                        return 'Number of Chalets in ' + locations[context.dataIndex];
-                    },
+                    label: 'Number of Chalets',
                     data: locationCounts,
                     backgroundColor: 'rgba(75, 192, 192, 0.2)',
                     borderColor: 'rgba(75, 192, 192, 1)',
@@ -252,9 +241,19 @@ document.addEventListener('DOMContentLoaded', (event) => {
                     x: {
                         beginAtZero: true
                     }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return 'Number of Chalets in ' + locations[context.dataIndex] + ': ' + context.raw;
+                            }
+                        }
+                    }
                 }
             }
         });
+        
 
         // Process ageData
         const ageLabels = ageData.labels;
@@ -298,7 +297,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }).catch(error => console.error('Error fetching data:', error));
 });
 
-// Function to handle form submission using fetch
+document.addEventListener('DOMContentLoaded', (event) => {
+    fetchChalets();
+});
 
 
     
@@ -380,7 +381,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
 
     // Fetch chalets on page load
-    fetchChalets();
+    
 
     // Handle pagination clicks
     document.querySelector('.pagination').addEventListener('click', function(event) {
