@@ -99,7 +99,7 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form class="form" id="createChaletForm" onsubmit="return validatePassword1()">
+                                    <form class="form" id="createChaletForm" onsubmit="return createChalet()">
                                         <div class="row">
                                             <div class="col"><div class="form-group" >
                                                 <label>Chalet Name</label>
@@ -110,14 +110,15 @@
                                                 <input class="form-control" type="text" name="Location" placeholder="Location" required>
                                             </div></div>
                                         </div>
+                                        
                                         <div class="row">
                                             <div class="col"><div class="form-group">
-                                                <label>Password</label>
-                                                <input class="form-control" type="password" placeholder="••••••" id="password1"  required>
+                                                <label>Price</label>
+                                                <input class="form-control" type="number" placeholder="example : 200$" name="price" min="0"  required>
                                             </div></div>
                                             <div class="col"><div class="form-group">
-                                                <label>Confirm Password</label>
-                                                <input class="form-control" type="password" placeholder="••••••" id="confirmPassword1"  required>
+                                                <label>Owner_Id</label>
+                                                <input class="form-control" type="number"  name="Owner_Id" min="2" placeholder="Chalet owner id"  required>
                                                 
                                             </div></div>
                                         </div>
@@ -149,8 +150,9 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form class="form" id="registrationForm2" onsubmit="return validatePassword2()">
+                                    <form class="form" id="registrationForm2" onsubmit="return update()">
                                             <div class="row">
+                                                <input type="hidden" id="chaletId" name="chaletId" value="">
                                                 <div class="col"><div class="form-group" >
                                                     <label>Chalet Name</label>
                                                     <input class="form-control" type="text" name="name" placeholder="Your Chalet Name" required>
@@ -162,12 +164,12 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col"><div class="form-group">
-                                                    <label>Password</label>
-                                                    <input class="form-control" type="password" placeholder="••••••" id="password2"  required>
+                                                    <label>Price</label>
+                                                    <input class="form-control" type="text" placeholder="" name="price"  required>
                                                 </div></div>
                                                 <div class="col"><div class="form-group">
-                                                    <label>Confirm Password</label>
-                                                    <input class="form-control" type="password" placeholder="••••••" id="confirmPassword2"  required>
+                                                    <label>Owner_Id</label>
+                                                    <input class="form-control" type="number" placeholder="" name="Owner_Id"  required>
                                                     
                                                 </div></div>
                                             </div>

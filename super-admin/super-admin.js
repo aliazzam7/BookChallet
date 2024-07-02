@@ -64,23 +64,7 @@ dateInputs.forEach(function(input) {
 });
 
 
-// Function to validate passwords
-function validatePassword1() {
-    const password1 = document.getElementById('password1').value;
-    const confirmPassword1 = document.getElementById('confirmPassword1').value;
-    const message1 = document.getElementById('message1');
 
-    if (password1 === confirmPassword1) {
-        message1.textContent = 'Passwords match.';
-        message1.className = 'success';
-        createChalet(); // Call function to submit form if passwords match
-        return false; // Prevent default form submission
-    } else {
-        message1.textContent = 'Passwords do not match.';
-        message1.className = 'error';
-        return false; // Prevent default form submission
-    }
-}
 
 
 
@@ -304,7 +288,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     
     // Function to fetch and display chalets
-    function fetchChalets(page = 1, perPage = 5) {
+    function fetchChalets(page = 1, perPage = 10, event) {
         fetch(`fetch_chalets.php?page=${page}&perPage=${perPage}`)
             .then(response => response.json())
             .then(data => {
@@ -320,7 +304,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
                             <td class="text-nowrap align-middle"><span>${chalet.date}</span></td>
                             <td class="text-center align-middle">
                                 <div class="btn-group align-top">
-                                    <button class="btn btn-sm btn-outline-secondary badge btn-blue" id="edit-${chalet.id}" data-id="${chalet.id}" data-name="${chalet.name}" data-location="${chalet.location}" data-date="${chalet.date}">Edit</button>
+                                    <button class="btn btn-sm btn-outline-secondary badge btn-blue" id="edit-${chalet.id}" data-id="${chalet.id}" >Edit</button>
+
                                     <button class="btn btn-sm btn-outline-secondary badge btn-red" id="delete-${chalet.id}" data-id="${chalet.id}">Delete</button>
                                 </div>
                             </td>
@@ -340,23 +325,26 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
                     // Add event listeners for delete buttons
                     document.querySelectorAll('.btn-red').forEach(button => {
-                        button.addEventListener('click', function() {
+                        button.addEventListener('click', function(event) {
                             const chaletId = this.getAttribute('data-id');
                             deleteChalet(chaletId);
+                            event.preventDefault();
                         });
                     });
                     document.querySelectorAll('.btn-blue').forEach(button => {
-                        button.addEventListener('click', function() {
+                        button.addEventListener('click', function(event) {
                             const chaletId = this.getAttribute('data-id');
                             const chaletname = this.getAttribute('data-name');
                             const location = this.getAttribute('data-location');
                             const date = this.getAttribute('data-date');
-                            EditChalet(chaletId,chaletname,location,date);
+                            EditChalet(chaletId);
+                            event.preventDefault();
                         });
                     });
                     
                 }
             });
+            event.preventDefault();
     }
 
     // Function to delete chalet
@@ -394,7 +382,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 
 
-function createChalet() {
+function createChalet(event) {
     let formData = new FormData(document.getElementById('createChaletForm'));
 
     fetch('create_chalet.php', {
@@ -412,10 +400,11 @@ function createChalet() {
         console.log(data); // Log response for debugging
 
         if (data.status === 'success') {
+            const message1 = "message1";
             alert(data.message); // Show success message
             resetCreateChaletForm(); // Reset form fields
             fetchChalets();
-            clearPasswordMessage(); 
+            
             setDefaultDate();
         } else {
             alert(data.message); // Show error message
@@ -425,6 +414,7 @@ function createChalet() {
         console.error('Error creating chalet:', error);
         // Handle errors if any
     });
+    event.preventDefault();
 }
 
 // Function to reset form fields in CreateChalet form
@@ -434,10 +424,10 @@ function resetCreateChaletForm() {
 
 
 
-function clearPasswordMessage() {
-    const message1 = document.getElementById('message1');
-    message1.textContent = '';
-    message1.className = '';
+function clearPasswordMessage(m) {
+    const message = document.getElementById(m);
+    message.textContent = '';
+    message.className = '';
 }
 
 
@@ -450,27 +440,48 @@ function setDefaultDate() {
     });
 }
      
-function EditChalet(chaletId,chaletname,location,date) {
-    div2.innerHTML += '<input type="hidden" name="chaletId" value='+chaletId+'>'; 
-    div2.style.display = "block";
-    document.querySelector('#Edit input[name="name"]').value = chaletname;
-    document.querySelector('#Edit input[name="Location"]').value = location;
-    document.querySelector('#Edit #date2').value = date;
-    
-  }
-  function update() {
+function EditChalet(chaletId) {
+    fetch(`get_chalet_data.php?chaletId=${chaletId}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                const chalet = data.chalet;
+                const ownerIds = data.owners;
+
+                document.querySelector('#chaletId').value = chaletId;
+                document.querySelector('#Edit input[name="name"]').value = chalet.name;
+                document.querySelector('#Edit input[name="Location"]').value = chalet.location;
+                document.querySelector('#Edit #date2').value = chalet.date;
+                document.querySelector('#Edit input[name="price"]').value = chalet.price;
+                document.querySelector('#Edit input[name="Owner_Id"]').value = ownerIds;
+                div2.style.display = "block";
+            } else {
+                alert(data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching chalet data:', error);
+            alert('An error occurred while fetching chalet data.');
+        });
+}
+
+function update(event) {
     // Get the values from the input fields
-    const chaletId = document.querySelector('#Edit input[name="chaletId"]').value; // Assuming you have a hidden input field for chaletId
+    const chaletId = document.querySelector('#Edit input[name="chaletId"]').value;
     const chaletName = document.querySelector('#Edit input[name="name"]').value;
     const location = document.querySelector('#Edit input[name="Location"]').value;
     const date = document.querySelector('#Edit #date2').value;
+    const price = document.querySelector('#Edit input[name="price"]').value;
+    const ownerIds = document.querySelector('#Edit input[name="Owner_Id"]').value;
 
     // Create an object with the data
     const data = {
         chaletId: chaletId,
         name: chaletName,
         location: location,
-        date: date
+        date: date,
+        price: price,
+        owner_ids: ownerIds
     };
 
     // Send the data to the server using fetch (AJAX request)
@@ -483,16 +494,56 @@ function EditChalet(chaletId,chaletname,location,date) {
     })
     .then(response => response.json())
     .then(data => {
-        if (data.success) {
+        if (data.status === 'success') {
+            const message2 = "message2";
             alert('Chalet updated successfully!');
             // Optionally, hide the modal and refresh the chalet list
             document.getElementById("Edit").style.display = "none";
+            
             fetchChalets();
         } else {
-            alert('Failed to update chalet.');
+            alert(data.message || 'Failed to update chalet.');
         }
     })
     .catch(error => {
         console.error('Error:', error);
     });
+    event.preventDefault();
 }
+
+
+// Function to handle search input
+function searchChalets() {
+    const input = document.getElementById('searchInput');
+    const filter = input.value.toUpperCase();
+    const table = document.getElementById('chalets_table');
+    const rows = table.getElementsByTagName('tr');
+
+    // Loop through all table rows, and hide those that don't match the search query
+    for (let i = 0; i < rows.length; i++) {
+        let shouldDisplay = false;
+        const cells = rows[i].getElementsByTagName('td');
+
+        // Check each cell in the current row
+        for (let j = 0; j < cells.length; j++) {
+            const cell = cells[j];
+            if (cell) {
+                const textValue = cell.textContent || cell.innerText;
+                if (textValue.toUpperCase().indexOf(filter) > -1) {
+                    shouldDisplay = true;
+                    break;
+                }
+            }
+        }
+
+        // Toggle display of the row based on search match
+        if (shouldDisplay) {
+            rows[i].style.display = '';
+        } else {
+            rows[i].style.display = 'none';
+        }
+    }
+}
+
+// Event listener for input field to trigger search
+document.getElementById('searchInput').addEventListener('input', searchChalets);

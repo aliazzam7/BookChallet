@@ -27,6 +27,40 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmtWishlist->execute();
             $stmtWishlist->close();
 
+            // Retrieve the user ID from the owners table
+            $selectOwnerQuery = "SELECT user_id FROM owners WHERE chalet_id = ?";
+            $stmtSelectOwner = $conn->prepare($selectOwnerQuery);
+            $stmtSelectOwner->bind_param("i", $chaletId);
+            $stmtSelectOwner->execute();
+            $stmtSelectOwner->bind_result($ownerId);
+            $stmtSelectOwner->fetch();
+            $stmtSelectOwner->close();
+
+            // Delete the row from the owners table
+            $deleteOwnersQuery = "DELETE FROM owners WHERE chalet_id = ?";
+            $stmtOwners = $conn->prepare($deleteOwnersQuery);
+            $stmtOwners->bind_param("i", $chaletId);
+            $stmtOwners->execute();
+            $stmtOwners->close();
+
+            // Check if the user ID exists in other rows of the owners table
+            $checkUserQuery = "SELECT COUNT(*) FROM owners WHERE user_id = ?";
+            $stmtCheckUser = $conn->prepare($checkUserQuery);
+            $stmtCheckUser->bind_param("i", $ownerId);
+            $stmtCheckUser->execute();
+            $stmtCheckUser->bind_result($count);
+            $stmtCheckUser->fetch();
+            $stmtCheckUser->close();
+
+            // If the user ID does not exist in other rows, change the role to 'user'
+            if ($count == 0) {
+                $updateRoleQuery = "UPDATE user SET role = 'user' WHERE id = ?";
+                $stmtUpdateRole = $conn->prepare($updateRoleQuery);
+                $stmtUpdateRole->bind_param("i", $ownerId);
+                $stmtUpdateRole->execute();
+                $stmtUpdateRole->close();
+            }
+
             // Delete chalet
             $deleteChaletQuery = "DELETE FROM chalet WHERE id = ?";
             $stmtChalet = $conn->prepare($deleteChaletQuery);
