@@ -1,8 +1,7 @@
 
 var div1 = document.getElementById('CreateChalet');
 var div2 = document.getElementById('Edit');
-var div3 = document.getElementById('CreateUser');
-var div4 = document.getElementById('EditUser');
+
 document.getElementById('button1').onclick = function() {
     
     if (div1.style.display === 'none' || div1.style.display === '') {
@@ -18,32 +17,26 @@ document.getElementById('close1').onclick = function() {
     div1.style.display = 'none';
 }
 
-function closeEditDiv() {
-    document.getElementById("Edit").style.display = "none";
+function closeEditDiv(x) {
+    document.getElementById(x).style.display = "none";
     
   }
 
 
 
 
-document.getElementById('button3').onclick = function() {
-    
-    if (div3.style.display === 'none' || div3.style.display === '') {
-        div3.style.display = 'block';
-        div4.style.display = 'none'
-    } 
-};
 
 
-document.getElementById('button4').onclick = function() {
+
+/*document.getElementById('button4').onclick = function() {
     
     if (div4.style.display === 'none' || div4.style.display === '') {
         div4.style.display = 'block';
         div3.style.display = 'none'
     } 
-};
+};*/
 
-document.getElementById('close3').onclick = function() {
+/*document.getElementById('close3').onclick = function() {
    
     div3.style.display = 'none';
 }
@@ -51,7 +44,7 @@ document.getElementById('close3').onclick = function() {
 document.getElementById('close4').onclick = function() {
     
     div4.style.display = 'none';
-}
+}*/
 
 var today = new Date().toISOString().split('T')[0];
 
@@ -304,9 +297,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
                             <td class="text-nowrap align-middle"><span>${chalet.date}</span></td>
                             <td class="text-center align-middle">
                                 <div class="btn-group align-top">
-                                    <button class="btn btn-sm btn-outline-secondary badge btn-blue" id="edit-${chalet.id}" data-id="${chalet.id}" >Edit</button>
+                                    <button class="btn btn-sm btn-outline-secondary badge btn-blue edit-btn" id="edit-${chalet.id}" data-id="${chalet.id}" >Edit</button>
 
-                                    <button class="btn btn-sm btn-outline-secondary badge btn-red" id="delete-${chalet.id}" data-id="${chalet.id}">Delete</button>
+                                    <button class="btn btn-sm btn-outline-secondary badge btn-red delete-btn" id="delete-${chalet.id}" data-id="${chalet.id}">Delete</button>
                                 </div>
                             </td>
                         `;
@@ -324,14 +317,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
                     }
 
                     // Add event listeners for delete buttons
-                    document.querySelectorAll('.btn-red').forEach(button => {
+                    document.querySelectorAll('.delete-btn').forEach(button => {
                         button.addEventListener('click', function(event) {
                             const chaletId = this.getAttribute('data-id');
                             deleteChalet(chaletId);
                             event.preventDefault();
                         });
                     });
-                    document.querySelectorAll('.btn-blue').forEach(button => {
+                    document.querySelectorAll('.edit-btn').forEach(button => {
                         button.addEventListener('click', function(event) {
                             const chaletId = this.getAttribute('data-id');
                             const chaletname = this.getAttribute('data-name');
@@ -344,7 +337,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
                     
                 }
             });
-            event.preventDefault();
+            
     }
 
     // Function to delete chalet
@@ -547,3 +540,182 @@ function searchChalets() {
 
 // Event listener for input field to trigger search
 document.getElementById('searchInput').addEventListener('input', searchChalets);
+
+--
+$(document).ready(function() {
+    var currentPage = 1; // Variable to store current page state
+
+    // Function to fetch user data from fetch_users.php
+    function fetchUsers() {
+        fetch('fetch_users.php')
+            .then(response => response.json())
+            .then(data => {
+                let html = '';
+                data.forEach(user => {
+                    html += `<tr data-user-id="${user.id}">
+                                <td>${user.id}</td>
+                                <td>${user.first_name}</td>
+                                <td>${user.last_name}</td>
+                                <td>${user.phone_number}</td>
+                                <td>${user.email}</td>
+                                <td><input type="password" class="form-control passwordField" value="${user.password}" readonly><button class="btn btn-sm togglePassword">Show</button></td>
+                                <td>
+                                    <button class="btn btn-success btn-sm saveBtn" style="display:none;">Save</button>
+                                    <button class="btn btn-warning btn-sm editBtn">Edit</button>
+                                    <button class="btn btn-danger btn-sm deleteBtn">Delete</button>
+                                </td>
+                            </tr>`;
+                });
+                $('#userTableBody').html(html);
+
+                // Re-initialize search, pagination, edit, and delete functionality after fetching new data
+                initSearch();
+                initPagination();
+                initEdit();
+                initDelete();
+
+                // Ensure pagination stays on the current page
+                showPage(currentPage);
+            })
+            .catch(error => console.error('Error fetching users:', error));
+    }
+
+    // Initial fetch of users and setup search, pagination, edit, and delete functionality when the page loads
+    fetchUsers();
+
+    // Password visibility toggle
+    $(document).on('click', '.togglePassword', function() {
+        var $passwordField = $(this).prev('.passwordField');
+        var type = $passwordField.attr('type') === 'password' ? 'text' : 'password';
+        $passwordField.attr('type', type);
+        $(this).text(type === 'password' ? 'Show' : 'Hide');
+    });
+
+    // Initialize search functionality
+    function initSearch() {
+        $("#searchInput2").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#userTableBody tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+
+            // Re-initialize pagination when search input is empty
+            if (value === '') {
+                initPagination();
+            }
+        });
+    }
+
+    // Pagination setup
+    function initPagination() {
+        var rowsPerPage = 2;
+        var $userTableBody = $('#userTableBody');
+        var totalRows = $userTableBody.find('tr').length;
+        var numPages = Math.ceil(totalRows / rowsPerPage);
+
+        // Show first page by default
+        showPage(currentPage);
+
+        // Pagination click event
+        $(document).off('click', '.page-link').on('click', '.page-link', function(e) {
+            e.preventDefault();
+            var page = $(this).text();
+            showPage(page);
+        });
+
+        function showPage(page) {
+            $userTableBody.find('tr').hide();
+            var start = (page - 1) * rowsPerPage;
+            var end = start + rowsPerPage;
+            $userTableBody.find('tr').slice(start, end).show();
+
+            // Update active page link
+            $('.page-item').removeClass('active');
+            $('.page-link:contains(' + page + ')').parent().addClass('active');
+
+            // Update current page variable
+            currentPage = page;
+
+            // Handle Previous and Next buttons
+            $('#prevPage').toggleClass('disabled', page === '1');
+            $('#nextPage').toggleClass('disabled', page === numPages.toString());
+        }
+
+        // Generate pagination links
+        var paginationHtml = '';
+        for (var i = 1; i <= numPages; i++) {
+            paginationHtml += `<li class="page-item ${i === currentPage ? 'active' : ''}"><a class="page-link" href="#">${i}</a></li>`;
+        }
+        $('.pagination').html(paginationHtml);
+    }
+
+    // Edit functionality
+    function initEdit() {
+        $(document).off('click', '.editBtn').on('click', '.editBtn', function() {
+            var $row = $(this).closest('tr');
+            $row.find('.passwordField').prop('readonly', false); // Enable editing for password field only
+            $row.find('.saveBtn').show();
+            $(this).hide();
+            $row.find('.deleteBtn').hide(); // Hide delete button while editing
+        });
+
+        $(document).off('click', '.saveBtn').on('click', '.saveBtn', function() {
+            var $row = $(this).closest('tr');
+            var userId = $row.data('user-id');
+            var newPassword = $row.find('.passwordField').val();
+
+            // Send update request to server
+            fetch(`update_user.php?id=${userId}&password=${newPassword}`, {
+                method: 'PUT'
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Handle success response
+                console.log('User updated successfully:', data);
+                // Re-fetch users to update table and maintain pagination
+                fetchUsers();
+                alert('Changes saved');
+                // Show edit button after save
+                $row.find('.editBtn').show();
+                $row.find('.deleteBtn').show();
+                $row.find('.saveBtn').hide();
+                $row.find('.passwordField').prop('readonly', true); // Disable editing after save
+            })
+            .catch(error => console.error('Error updating user:', error));
+        });
+    }
+
+    // Delete functionality
+    function initDelete() {
+        $(document).off('click', '.deleteBtn').on('click', '.deleteBtn', function() {
+            var $row = $(this).closest('tr');
+            var userId = $row.data('user-id');
+
+            if (confirm('Are you sure you want to delete this user?')) {
+                // Perform delete operation using fetch
+                fetch(`delete_user.php?id=${userId}`, {
+                    method: 'DELETE'
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Handle success response
+                    console.log('User deleted successfully:', data);
+                    // Re-fetch users to update table and maintain pagination
+                    fetchUsers();
+                })
+                .catch(error => console.error('Error deleting user:', error));
+            }
+        });
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
