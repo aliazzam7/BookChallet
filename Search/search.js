@@ -28,8 +28,9 @@ function toggleHeart(element, chaletId) {
     console.log('Toggle heart clicked for chaletId:', chaletId);
     element.classList.toggle('clicked');
 
+    
     // Replace with actual user_id (e.g., from session or input)
-    const user_id = 3; 
+    const user_id = document.getElementById("sessionVariable").value; 
 
     // Prepare data to send in the POST request
     const postData = {
@@ -103,7 +104,9 @@ document.addEventListener('DOMContentLoaded', function() {
                             </div>
                             <div class="col-md-3 price-column">
                                 <p>${chalet.price}$</p>
+                                <a href="chalet_info.php?chalet_id= ${chalet.id}; ">
                                 <button class="btn btn-light">View Details</button>
+                                </a>
                             </div>
                         </div>
                         <i class="${heartClass}" onclick="toggleHeart(this, ${chalet.id})"></i>

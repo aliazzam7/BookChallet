@@ -11,7 +11,21 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="search.js"></script>
     <title>Filter</title>
-   
+    <?php
+session_start();
+
+// Check if required parameters are set in the GET request
+if (isset($_GET['location']) && isset($_GET['budget']) && isset($_GET['date_start']) && isset($_GET['date_end']) && isset($_GET['user_id'])) {
+    // Fetching parameters from GET method and storing them in session variables
+    $_SESSION['location'] = htmlspecialchars($_GET['location']);
+    $_SESSION['budget'] = htmlspecialchars($_GET['budget']);
+    $_SESSION['date_start'] = htmlspecialchars($_GET['date_start']);
+    $_SESSION['date_end'] = htmlspecialchars($_GET['date_end']);
+    $_SESSION['user_id'] = intval($_GET['user_id']);
+    header("Location: search.html");
+} 
+
+?>
 </head>
 <header>
     <div class="header " style="background-color: #DDE1E1;; ">
@@ -40,7 +54,7 @@
 </div>
 </header>
 <body style="background-color: #f8f9fa;">
-    
+<input type="hidden" id="sessionVariable" value="<?php echo $_SESSION['user_id']; ?>">
     <div id="card-container" class="body1" >
         
 

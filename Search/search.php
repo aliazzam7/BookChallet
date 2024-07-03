@@ -3,14 +3,15 @@ error_reporting(E_ALL);
 ini_set('display_errors', 0); // Set to 0 to hide errors in production
 
 require_once 'db_connection.php';
+session_start();
 
-$location = ""; 
-$budget = "  "; 
-$date_start = "2024-06-27"; // Example start date
-$date_end = "2024-06-10";   // Example end date
-
-$user_id = 3;
-
+if (isset($_SESSION['location']) && isset($_SESSION['budget']) && isset($_SESSION['date_start']) && isset($_SESSION['date_end']) && isset($_SESSION['user_id'])) {
+    $location = $_SESSION['location'];
+    $budget = $_SESSION['budget'];
+    $date_start = $_SESSION['date_start'];
+    $date_end = $_SESSION['date_end'];
+    $user_id = $_SESSION['user_id'];
+}
 // Trim whitespace from location and budget variables
 $location = trim($location);
 $budget = trim($budget);
@@ -35,7 +36,7 @@ $reservedChaletsSql = "
     SELECT chalet_id 
     FROM reservation 
     WHERE (
-        (`check-in` < '" . $date_end->format('Y-m-d') . "' AND `check-out` > '" . $date_start->format('Y-m-d') . "')
+        (`check_in` < '" . $date_end->format('Y-m-d') . "' AND `check_out` > '" . $date_start->format('Y-m-d') . "')
     )
 ";
 $reservedResult = $conn->query($reservedChaletsSql);
