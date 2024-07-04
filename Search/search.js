@@ -54,7 +54,7 @@ function toggleHeart(element, chaletId) {
         return response.text();
     })
     .then(result => {
-        console.log('Server response:', result); // Log server response (added or removed)
+        console.log('Server response:', result); 
     })
     .catch(error => {
         console.error('Error toggling wishlist:', error);
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
     fetch('search.php')
     .then(response => response.json())
     .then(data => {
-        // Check if data is an object or array
+        
         if (!Array.isArray(data.chalets)) {
             console.error('Invalid data format: chalets array is missing or invalid');
             return;
@@ -79,19 +79,19 @@ document.addEventListener('DOMContentLoaded', function() {
         function createCards() {
             const container = document.getElementById("card-container");
 
-            // Clear existing content
+            
             container.innerHTML = '';
             if (data.error) {
                 container.innerHTML = `<p>${data.error}</p>`;
                 return;
             }
-            // Check if chalets array is empty
+            
             if (data.chalets.length === 0) {
                 container.innerHTML = '<p>No chalets match your criteria.</p>';
                 return;
             }
             
-            // Loop through each chalet and create a card
+            
             data.chalets.forEach((chalet) => {
                 const isWishlisted = data.wishlist.includes(chalet.id);
                 const heartClass = isWishlisted ? 'fas fa-heart heart-icon clicked' : 'fas fa-heart heart-icon';

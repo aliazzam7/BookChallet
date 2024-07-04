@@ -46,7 +46,7 @@
 <?php 
 session_start();
 
-// Unset all session variables
+
 $_SESSION = array();
 ?>
 <div class="container">
@@ -54,19 +54,19 @@ $_SESSION = array();
     <form action="filter.php" method="get">
         <div class="form-group">
             <label for="location">Location:</label>
-            <input type="text" id="location" name="location" required>
+            <input type="text" id="location" name="location">
         </div>
         <div class="form-group">
             <label for="budget">Budget:</label>
-            <input type="number" id="budget" name="budget" required>
+            <input type="number" id="budget" name="budget" >
         </div>
         <div class="form-group">
             <label for="date_start">Start Date:</label>
-            <input type="date" id="date_start" name="date_start" required>
+            <input type="date" id="date_start" name="date_start" >
         </div>
         <div class="form-group">
             <label for="date_end">End Date:</label>
-            <input type="date" id="date_end" name="date_end" required>
+            <input type="date" id="date_end" name="date_end" >
         </div>
         
         <div class="form-group">

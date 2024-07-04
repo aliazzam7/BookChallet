@@ -12,15 +12,15 @@ if (isset($_SESSION['location']) && isset($_SESSION['budget']) && isset($_SESSIO
     $date_end = $_SESSION['date_end'];
     $user_id = $_SESSION['user_id'];
 }
-// Trim whitespace from location and budget variables
+
 $location = trim($location);
 $budget = trim($budget);
 
-// Convert date strings to DateTime objects for comparison
+
 $date_start = new DateTime(trim($date_start));
 $date_end = new DateTime(trim($date_end));
 
-// Check if the start date is before the end date
+
 if ($date_start >= $date_end) {
     $response = [
         'error' => 'The start date must be earlier than the end date.',
@@ -31,7 +31,7 @@ if ($date_start >= $date_end) {
     exit;
 }
 
-// Fetch reserved chalets within the date range
+
 $reservedChaletsSql = "
     SELECT chalet_id 
     FROM reservation 
@@ -48,7 +48,7 @@ while ($row = $reservedResult->fetch_assoc()) {
 
 $reservedChaletIdsStr = implode(',', $reservedChaletIds);
 
-// Construct the main SQL query
+
 $sql = "SELECT id, name, location, price, description, image FROM chalet";
 
 if (!empty($location)) {
@@ -70,7 +70,7 @@ while ($row = $result->fetch_assoc()) {
     $chalets[] = $row;
 }
 
-// Fetch wishlist chalets for the user
+
 $wishlistSql = "SELECT chalet_id FROM whishlist WHERE user_id = $user_id";
 $wishlistResult = $conn->query($wishlistSql);
 
