@@ -1,11 +1,11 @@
 <?php
 header('Content-Type: application/json');
-require_once 'db_connection.php'; // Ensure this file exists and connects to your database
+require_once 'db_connection.php'; 
 
 if (isset($_GET['chaletId'])) {
     $chaletId = $_GET['chaletId'];
 
-    // Create MySQLi connection (assuming db_connection.php sets up $conn)
+
     if (!$conn) {
         $response = [
             'status' => 'error',
@@ -15,7 +15,7 @@ if (isset($_GET['chaletId'])) {
         exit;
     }
 
-    // Fetch chalet data
+   
     $chaletQuery = "SELECT name, location, date, price FROM chalet WHERE id = ?";
     $stmtChalet = $conn->prepare($chaletQuery);
     $stmtChalet->bind_param("i", $chaletId);
@@ -24,7 +24,7 @@ if (isset($_GET['chaletId'])) {
     $chaletData = $chaletResult->fetch_assoc();
     $stmtChalet->close();
 
-    // Fetch owner data
+    
     $ownersQuery = "SELECT user_id FROM owners WHERE chalet_id = ?";
     $stmtOwners = $conn->prepare($ownersQuery);
     $stmtOwners->bind_param("i", $chaletId);
@@ -41,7 +41,7 @@ if (isset($_GET['chaletId'])) {
         $response = [
             'status' => 'success',
             'chalet' => $chaletData,
-            'owners' => implode('-', $ownerIds) // Combine owner IDs with hyphen separator
+            'owners' => implode('-', $ownerIds) 
         ];
     } else {
         $response = [

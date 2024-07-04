@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json');
-require_once 'db_connection.php'; // Ensure this file exists and connects to your database
+require_once 'db_connection.php'; 
 
 
 
@@ -9,7 +9,7 @@ $perPage = $_GET['perPage'] ?? 5;
 $offset = ($page - 1) * $perPage;
 
 try {
-    // Query to fetch chalet data with limit and offset
+    
     $query = "SELECT * FROM chalet LIMIT ? OFFSET ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param('ii', $perPage, $offset);
@@ -21,7 +21,7 @@ try {
         $chalets[] = $row;
     }
 
-    // Count total rows
+    
     $countQuery = "SELECT COUNT(*) AS total FROM chalet";
     $countResult = $conn->query($countQuery);
     $totalRows = $countResult->fetch_assoc()['total'];
@@ -46,7 +46,7 @@ try {
     echo json_encode($response);
     exit;
 } finally {
-    // Close connection
+    
     $conn->close();
 }
 ?>
