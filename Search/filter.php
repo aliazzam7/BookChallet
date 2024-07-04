@@ -15,16 +15,17 @@
 session_start();
 
 // Check if required parameters are set in the GET request
-if (isset($_GET['location']) && isset($_GET['budget']) && isset($_GET['date_start']) && isset($_GET['date_end']) && isset($_GET['user_id'])) {
+if (isset($_GET['location']) && isset($_GET['budget']) && isset($_GET['date_start']) && isset($_GET['date_end'])) {
     // Fetching parameters from GET method and storing them in session variables
     $_SESSION['location'] = htmlspecialchars($_GET['location']);
     $_SESSION['budget'] = htmlspecialchars($_GET['budget']);
     $_SESSION['date_start'] = htmlspecialchars($_GET['date_start']);
     $_SESSION['date_end'] = htmlspecialchars($_GET['date_end']);
-    $_SESSION['user_id'] = intval($_GET['user_id']);
-    header("Location: search.html");
+    
 } 
-
+if (!isset($_SESSION['user_id'])) {
+    $_SESSION['user_id'] = 2; 
+}
 ?>
 </head>
 <header>

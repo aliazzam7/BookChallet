@@ -26,12 +26,14 @@ window.addEventListener('resize', function() {
 
 function toggleHeart(element, chaletId) {
     console.log('Toggle heart clicked for chaletId:', chaletId);
-    element.classList.toggle('clicked');
-
     
-    // Replace with actual user_id (e.g., from session or input)
-    const user_id = document.getElementById("sessionVariable").value; 
+    const user_id = document.getElementById("sessionVariable").value;
 
+    if (user_id == '2') {
+        alert('Please log in first to add to wishlist.');
+        return;
+    }else{
+        element.classList.toggle('clicked');
     // Prepare data to send in the POST request
     const postData = {
         user_id: user_id,
@@ -57,8 +59,12 @@ function toggleHeart(element, chaletId) {
     .catch(error => {
         console.error('Error toggling wishlist:', error);
     });
+
     console.log('Sending POST request with user_id:', user_id, 'and chalet_id:', chaletId);
+    }
+    
 }
+
 
 document.addEventListener('DOMContentLoaded', function() {
     fetch('search.php')

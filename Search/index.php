@@ -43,7 +43,12 @@
     </style>
 </head>
 <body>
+<?php 
+session_start();
 
+// Unset all session variables
+$_SESSION = array();
+?>
 <div class="container">
     <h1>Search Chalet</h1>
     <form action="filter.php" method="get">
@@ -63,15 +68,7 @@
             <label for="date_end">End Date:</label>
             <input type="date" id="date_end" name="date_end" required>
         </div>
-        <div class="form-group">
-            <label for="user_id">User ID:</label>
-            <select id="user_id" name="user_id" required>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-            </select>
-        </div>
+        
         <div class="form-group">
             <button type="submit">Search</button>
         </div>
